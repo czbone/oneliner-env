@@ -6,23 +6,11 @@ readonly GITHUB_REPO="oneliner-env"
 readonly WORK_DIR=/root/${GITHUB_REPO}_work
 
 # check root user
-#if [ $(whoami) != "root" ]; then
-#    echo "This script must be run as root"
-#fi
-FILE="/tmp/out.$$"
-GREP="/bin/grep"
-#....
-# Make sure only root can run our script
-if [[ $EUID -ne 0 ]]; then
-   echo "This script must be run as root" 1>&2
-   exit 1
-fi
-
 readonly USERID=`id | sed 's/uid=\([0-9]*\)(.*/\1/'`
 echo $USERID;
 if [ $USERID -ne 0 ]
 then
-    echo "error: only excute by root"
+    echo "error: can only excute by root"
     exit 1
 fi
 
@@ -81,7 +69,7 @@ $INSTALL_PACKAGE_CMD ansible
 
 # Download the latest repository archive
 if [ $TEST_MODE == 'true' ]; then
-    echo "### START TEST MODE ###"
+    echo "################# START TEST MODE #################"
     url="https://github.com/${GITHUB_USER}/${GITHUB_REPO}/archive/master.tar.gz"
     version="new"
 else
@@ -99,10 +87,8 @@ cd ${WORK_DIR}
 savefilelist=`ls -1`
 
 # Download archived repository
-echo "Start download repository"
+echo "Start download repository ${filepath}" 
 curl -s -o ${filepath} -L $url
-echo "Download repository completed"
-echo ${filepath}
 
 # Remove old files
 for file in $savefilelist; do

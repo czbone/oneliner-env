@@ -91,6 +91,6 @@ destdir=`tar tzf ${filepath} | head -n 1`
 destdirname=`basename $destdir`
 
 #cp ${filepath} ./
-tar xzf ${filename}
+tar xzf ${filename} ./
 find ./ -type f -name ".gitkeep" -delete
 echo ${filename}" unarchived"

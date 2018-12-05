@@ -68,6 +68,7 @@ $INSTALL_PACKAGE_CMD ansible
 
 # Download the latest repository archive
 if [ $TEST_MODE == 'true' ]; then
+    echo "### START TEST MODE ###"
     url="https://github.com/${GITHUB_USER}/${GITHUB_REPO}/archive/master.tar.gz"
     version="new"
 else

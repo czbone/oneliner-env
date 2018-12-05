@@ -72,7 +72,7 @@ mkdir -p ${WORK_DIR}
 cd ${WORK_DIR}
 savefilelist=`ls -1`
 
-# Download repository archive
+# Download archived repository
 echo "Start download repository"
 curl -s -o ${WORK_DIR}/$filename -L $url
 echo "Download repository completed"
@@ -87,11 +87,12 @@ for file in $savefilelist; do
     fi
 done
 
-# Get directory name
+# Get archive directory name
 destdir=`tar tzf ${filepath} | head -n 1`
 destdirname=`basename $destdir`
 
-#cp ${filepath} ./
+# Unarchive repository
 tar xzf ${filename}
 find ./ -type f -name ".gitkeep" -delete
+mv ${destdirname} ${GITHUB_REPO}
 echo ${filename}" unarchived"

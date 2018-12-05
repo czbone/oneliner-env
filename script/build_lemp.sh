@@ -4,6 +4,7 @@
 readonly GITHUB_USER="czbone"
 readonly GITHUB_REPO="oneliner-env"
 readonly WORK_DIR=/root/${GITHUB_REPO}_work
+readonly PLAYBOOK="lemp"
 
 # check root user
 readonly USERID=`id | sed 's/uid=\([0-9]*\)(.*/\1/'`
@@ -108,4 +109,6 @@ find ./ -type f -name ".gitkeep" -delete
 mv ${destdirname} ${GITHUB_REPO}
 echo ${filename}" unarchived"
 
+# launch ansible
+cd ${WORK_DIR}/${GITHUB_REPO}/playbooks/${PLAYBOOK}
 ansible-galaxy install --role-file=requirements.yml --roles-path=/etc/ansible/roles --force

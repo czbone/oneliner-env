@@ -83,7 +83,7 @@ echo ${filePath}
 for file in $savefilelist; do
     if [ ${file} != ${filename} ]
     then
-        rm -f "${file}"
+        rm -rf "${file}"
     fi
 done
 

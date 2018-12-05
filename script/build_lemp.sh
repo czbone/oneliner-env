@@ -22,13 +22,13 @@ if [ "$(uname)" == 'Darwin' ]; then
     exit 1
 elif [ "$(expr substr $(uname -s) 1 5)" == 'Linux' ]; then
     RELEASE_FILE=/etc/os-release
-    if grep '^NAME="CentOS' "${RELEASE_FILE}" >/dev/null; then
+    if grep '^NAME="CentOS' ${RELEASE_FILE} >/dev/null; then
         OS="CentOS"
-    elif grep '^NAME="Amazon' "${RELEASE_FILE}" >/dev/null; then
+    elif grep '^NAME="Amazon' ${RELEASE_FILE} >/dev/null; then
         OS="Amazon Linux"
         uname -a
         exit 1
-    elif grep '^NAME="Ubuntu' "${RELEASE_FILE}" >/dev/null; then
+    elif grep '^NAME="Ubuntu' ${RELEASE_FILE} >/dev/null; then
         OS="Ubuntu"
     else
         echo "Your platform is not supported."
@@ -45,11 +45,17 @@ else
     exit 1
 fi
 
-echo "Get OS is $OS"
 echo "########################################################################"
 echo "# $OS LEMP                                                             #"
 echo "# START BUILDING ENVIRONMENT                                           #"
 echo "########################################################################"
+
+# Get test mode
+if [[  "$1" = '-test'  ]]; then
+    readonly TEST_MODE="true"
+else
+    readonly TEST_MODE="false"
+fi
 
 declare INSTALL_PACKAGE_CMD=""
 if [ $OS == 'CentOS' ]; then
@@ -61,11 +67,17 @@ fi
 $INSTALL_PACKAGE_CMD ansible
 
 # Download the latest repository archive
-url=`curl -s "https://api.github.com/repos/${GITHUB_USER}/${GITHUB_REPO}/tags" | grep "tarball_url" | \
-    sed -n '/[ \t]*"tarball_url"/p' | head -n 1 | \
-    sed -e 's/[ \t]*".*":[ \t]*"\(.*\)".*/\1/'`
-version=`basename $url | sed -e 's/v\([0-9\.]*\)/\1/'`
+if [ $TEST_MODE == 'true' ]; then
+    url="https://github.com/${GITHUB_USER}/${GITHUB_REPO}/archive/master.tar.gz"
+    version="new"
+else
+    url=`curl -s "https://api.github.com/repos/${GITHUB_USER}/${GITHUB_REPO}/tags" | grep "tarball_url" | \
+        sed -n '/[ \t]*"tarball_url"/p' | head -n 1 | \
+        sed -e 's/[ \t]*".*":[ \t]*"\(.*\)".*/\1/'`
+    version=`basename $url | sed -e 's/v\([0-9\.]*\)/\1/'`
+fi
 filename=${GITHUB_REPO}_${version}.tar.gz
+filepath=${WORK_DIR}/$filename
 
 # Set current directory
 mkdir -p ${WORK_DIR}
@@ -74,9 +86,8 @@ savefilelist=`ls -1`
 
 # Download archived repository
 echo "Start download repository"
-curl -s -o ${WORK_DIR}/$filename -L $url
+curl -s -o ${filepath} -L $url
 echo "Download repository completed"
-filepath=${WORK_DIR}/$filename
 echo ${filepath}
 
 # Remove old files

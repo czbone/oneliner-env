@@ -1,12 +1,12 @@
 #!/bin/bash
 
 # Define macro parameter
-declare GITHUB_USER="czbone"
-declare GITHUB_REPO="oneliner-env"
-declare WORK_DIR=/root/${GITHUB_REPO}_work
+readonly GITHUB_USER="czbone"
+readonly GITHUB_REPO="oneliner-env"
+readonly WORK_DIR=/root/${GITHUB_REPO}_work
 
 # check root user
-declare USERID=`id | sed 's/uid=\([0-9]*\)(.*/\1/'`
+readonly USERID=`id | sed 's/uid=\([0-9]*\)(.*/\1/'`
 if [ $USERID -ne 0 ]
 then
     echo "error: only excute by root"
@@ -47,6 +47,7 @@ fi
 
 echo "Get OS is $OS"
 echo "########################################################################"
+echo "# $OS LEMP                                                             #"
 echo "# START BUILDING ENVIRONMENT                                           #"
 echo "########################################################################"
 
@@ -64,7 +65,7 @@ url=`curl -s "https://api.github.com/repos/${GITHUB_USER}/${GITHUB_REPO}/tags" |
     sed -n '/[ \t]*"tarball_url"/p' | head -n 1 | \
     sed -e 's/[ \t]*".*":[ \t]*"\(.*\)".*/\1/'`
 version=`basename $url | sed -e 's/v\([0-9\.]*\)/\1/'`
-filename=${GITHUB_REPO}${version}.tar.gz
+filename=${GITHUB_REPO}_${version}.tar.gz
 
 # Set current directory
 mkdir -p ${WORK_DIR}
@@ -77,3 +78,10 @@ curl -s -o ${WORK_DIR}/$filename -L $url
 echo "Download repository completed"
 echo ${WORK_DIR}/$filename
 
+#ãåÉtÉ@ÉCÉãÇçÌèú
+for file in $savefilelist; do
+    if [ ${file} != ${filename} ]
+    then
+        rm -f "${file}"
+    fi
+done

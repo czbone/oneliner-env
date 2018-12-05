@@ -38,7 +38,7 @@ echo "# START BUILDING ENVIRONMENT"
 echo "########################################################################"
 if [ $OS == 'CentOS' ]; then
     INSTALL_PACKAGE_CMD="yum -y install"
-elseif [ $OS == 'Ubuntu' ]; then
+elif [ $OS == 'Ubuntu' ]; then
     INSTALL_PACKAGE_CMD="apt-get install"
 fi
 $INSTALL_PACKAGE_CMD git

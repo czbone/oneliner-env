@@ -1,2 +1,6 @@
-# oneliner-env
-Build server environment by one-liner command
+# １行で環境構築
+サーバにrootログインし１行のコマンドを実行するだけで環境構築できるスクリプトです。
+
+#対象OS
+- CentOS 7
+- Ubuntu 14

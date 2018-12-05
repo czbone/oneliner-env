@@ -34,8 +34,10 @@ fi
 
 echo "Get OS is $OS"
 echo "########################################################################"
-echo "# START BUILDING ENVIRONMENT"
+echo "# START BUILDING ENVIRONMENT                                           #"
 echo "########################################################################"
+
+declare INSTALL_PACKAGE_CMD=""
 if [ $OS == 'CentOS' ]; then
     INSTALL_PACKAGE_CMD="yum -y install"
 elif [ $OS == 'Ubuntu' ]; then

@@ -12,7 +12,7 @@
     php_fpm_pool_group: nginx
 #    nginx_conf_template: "{{ playbook_dir }}/templates/nginx.conf.j2"
 #    nginx_vhost_template: "{{ playbook_dir }}/templates/vhost.j2"
-
+    
     mysql_config_include_files:
       - name: 'server.cnf'
         src: '{{ playbook_dir }}/templates/server.cnf'

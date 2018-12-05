@@ -10,6 +10,7 @@ if [ $(whoami) != "root" ]; then
     echo "This script must be run as root"
 fi
 readonly USERID=`id | sed 's/uid=\([0-9]*\)(.*/\1/'`
+echo $USERID;
 if [ $USERID -ne 0 ]
 then
     echo "error: only excute by root"

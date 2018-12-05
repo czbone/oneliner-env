@@ -1,5 +1,9 @@
 #!/bin/bash
 
+# Define macro parameter
+declare GITHUB_USER="czbone"
+declare GITHUB_REPO="oneliner-env"
+
 # Check os version
 declare OS="unsupported os"
 
@@ -43,6 +47,14 @@ if [ $OS == 'CentOS' ]; then
 elif [ $OS == 'Ubuntu' ]; then
     INSTALL_PACKAGE_CMD="apt-get install"
 fi
-$INSTALL_PACKAGE_CMD git
+#$INSTALL_PACKAGE_CMD git
 $INSTALL_PACKAGE_CMD ansible
 
+# Download the latest repository archive
+url=`curl -s "https://api.github.com/repos/${GITHUB_USER}/${GITHUB_REPO}/tags" | grep "tarball_url" | \
+    sed -n '/[ \t]*"tarball_url"/p' | head -n 1 | \
+    sed -e 's/[ \t]*".*":[ \t]*"\(.*\)".*/\1/'`
+version=`basename $url | sed -e 's/v\([0-9\.]*\)/\1/'`
+filename=${FILENAME_HEAD}${version}.tar.gz
+
+echo "------------" $filename

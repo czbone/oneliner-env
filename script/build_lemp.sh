@@ -3,6 +3,15 @@
 # Define macro parameter
 declare GITHUB_USER="czbone"
 declare GITHUB_REPO="oneliner-env"
+declare WORK_DIR=/root/${GITHUB_REPO}_work
+
+# check root user
+declare USERID=`id | sed 's/uid=\([0-9]*\)(.*/\1/'`
+if [ $USERID -ne 0 ]
+then
+    echo "error: only excute by root"
+    exit 1
+fi
 
 # Check os version
 declare OS="unsupported os"
@@ -55,6 +64,16 @@ url=`curl -s "https://api.github.com/repos/${GITHUB_USER}/${GITHUB_REPO}/tags" |
     sed -n '/[ \t]*"tarball_url"/p' | head -n 1 | \
     sed -e 's/[ \t]*".*":[ \t]*"\(.*\)".*/\1/'`
 version=`basename $url | sed -e 's/v\([0-9\.]*\)/\1/'`
-filename=${FILENAME_HEAD}${version}.tar.gz
+filename=${GITHUB_REPO}${version}.tar.gz
 
-echo "------------" $filename
+# Set current directory
+mkdir -p ${WORK_DIR}
+cd ${WORK_DIR}
+savefilelist=`ls -1`
+
+# Download repository archive
+echo "Start download repository"
+curl -s -o ${WORK_DIR}/$filename -L $url
+echo "Download repository completed"
+echo ${WORK_DIR}/$filename
+

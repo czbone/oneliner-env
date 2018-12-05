@@ -76,7 +76,8 @@ savefilelist=`ls -1`
 echo "Start download repository"
 curl -s -o ${WORK_DIR}/$filename -L $url
 echo "Download repository completed"
-echo ${WORK_DIR}/$filename
+filePath=${WORK_DIR}/$filename
+echo ${filePath}
 
 # Remove old files
 for file in $savefilelist; do
@@ -91,6 +92,6 @@ destdir=`tar tzf ${filepath} | head -n 1`
 destdirname=`basename $destdir`
 
 #cp ${filepath} ./
-tar xzf ${filename} ./
+tar xzf ${filename}
 find ./ -type f -name ".gitkeep" -delete
 echo ${filename}" unarchived"

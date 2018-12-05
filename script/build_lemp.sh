@@ -78,10 +78,19 @@ curl -s -o ${WORK_DIR}/$filename -L $url
 echo "Download repository completed"
 echo ${WORK_DIR}/$filename
 
-#‹Œƒtƒ@ƒCƒ‹‚ğíœ
+# Remove old files
 for file in $savefilelist; do
     if [ ${file} != ${filename} ]
     then
         rm -f "${file}"
     fi
 done
+
+# Get directory name
+destdir=`tar tzf ${filepath} | head -n 1`
+destdirname=`basename $destdir`
+
+#cp ${filepath} ./
+tar xzf ${filename}
+find ./ -type f -name ".gitkeep" -delete
+echo ${filename}" unarchived"

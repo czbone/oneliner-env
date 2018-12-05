@@ -24,3 +24,4 @@ else
   exit 1
 fi
 
+echo "Get OS is $OS"

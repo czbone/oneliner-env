@@ -107,3 +107,5 @@ tar xzf ${filename}
 find ./ -type f -name ".gitkeep" -delete
 mv ${destdirname} ${GITHUB_REPO}
 echo ${filename}" unarchived"
+
+ansible-galaxy install --role-file=requirements.yml --roles-path=/etc/ansible/roles --force

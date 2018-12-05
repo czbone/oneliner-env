@@ -6,6 +6,9 @@ readonly GITHUB_REPO="oneliner-env"
 readonly WORK_DIR=/root/${GITHUB_REPO}_work
 
 # check root user
+if [ $(whoami) != "root" ]; then
+    echo "This script must be run as root"
+fi
 readonly USERID=`id | sed 's/uid=\([0-9]*\)(.*/\1/'`
 if [ $USERID -ne 0 ]
 then

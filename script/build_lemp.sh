@@ -76,8 +76,8 @@ savefilelist=`ls -1`
 echo "Start download repository"
 curl -s -o ${WORK_DIR}/$filename -L $url
 echo "Download repository completed"
-filePath=${WORK_DIR}/$filename
-echo ${filePath}
+filepath=${WORK_DIR}/$filename
+echo ${filepath}
 
 # Remove old files
 for file in $savefilelist; do

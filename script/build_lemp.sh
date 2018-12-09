@@ -2,14 +2,14 @@
 # 
 # Script Name: build_lemp.sh
 #
-# Version:      0.1
+# Version:      1.0.0
 # Author:       Naoki Hirata
-# Date:         2018-12-6
+# Date:         2018-12-9
 # Usage:        build_lemp.sh [-test]
 # Options:      -test      test mode execution with the latest source package
 # Description:  This script builds LEMP(Linux Nginx, MariaDB, Linux) server environment with the one-liner command.
 # Version History:
-#               0.1  (2018-12-06) initial version
+#               1.0.0  (2018-12-09) initial version
 # License:      MIT License
 
 # Define macro parameter

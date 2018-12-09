@@ -1,6 +1,10 @@
 - hosts: localhost
   connection: local
   
+  vars_files:
+    - vars/main.yml
+    - vars/vhosts.yml
+    
   vars:
     php_version: '7.2'
     

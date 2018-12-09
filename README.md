@@ -18,7 +18,7 @@
 次の特色があります。
 
 - 最新のソフトウェア環境
-- 日本語対応
+- 日本語最適化
 
 # 使い方
 新規にOSをインストールしたサーバにrootでログインし、構築したい環境のスクリプトを実行します。
@@ -31,3 +31,6 @@ PHPはバージョン7.0以上です。
 ```
 $ curl https://raw.githubusercontent.com/czbone/oneliner-env/master/script/build_lemp.sh | sh
 ```
+
+# 検証環境
+- Vagrant Box 「centos/7」

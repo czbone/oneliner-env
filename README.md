@@ -34,3 +34,4 @@ $ curl https://raw.githubusercontent.com/czbone/oneliner-env/master/script/build
 
 # 検証環境
 - Vagrant Box 「centos/7」
+- さくらVPS 「CentOS7」

@@ -6,14 +6,14 @@
 このプロジェクトは、正確に動作するごく標準的な環境を構築するのを目的としています。
 それ以上の環境が必要な場合は、出来た環境からさらに独自のカスタマイズを行うのがベターです。
 
-# 対象OS
+## 対象OS
 - CentOS 7
 
-# Licence
+## ライセンス
 
 [![MIT license](https://img.shields.io/badge/License-MIT-blue.svg)](https://lbesson.mit-license.org/)
 
-## 実行内容
+# 実行内容
 ローカルにAnsibleをインストールし、Ansible GalaxyのPlaybookを基本に少しカスタマイズして環境構築しています。
 次の特色があります。
 
@@ -31,7 +31,6 @@ PHPはバージョン7.0以上です。
 ```
 $ curl https://raw.githubusercontent.com/czbone/oneliner-env/master/script/build_lemp.sh | sh
 ```
-
 
 # 検証環境
 - Vagrant Box 「centos/7」

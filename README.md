@@ -11,7 +11,7 @@
 
 ## Licence
 
-[MIT](https://github.com/tcnksm/tool/blob/master/LICENCE)
+[![MIT license](https://img.shields.io/badge/License-MIT-blue.svg)](https://lbesson.mit-license.org/)
 
 ## 実行内容
 ローカルにAnsibleをインストールし、Ansible GalaxyのPlaybookを基本に少しカスタマイズして環境構築しています。
@@ -31,6 +31,8 @@ PHPはバージョン7.0以上です。
 ```
 $ curl https://raw.githubusercontent.com/czbone/oneliner-env/master/script/build_lemp.sh | sh
 ```
+## リアルタイム動画配信環境構築(予定)
+
 
 # 検証環境
 - Vagrant Box 「centos/7」

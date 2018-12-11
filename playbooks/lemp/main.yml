@@ -28,13 +28,19 @@
     - geerlingguy.php-versions
     - geerlingguy.php
     - geerlingguy.mysql
+    - role: geerlingguy.firewall
+      when: ansible_os_family == 'Debian'
     
   tasks:
     - selinux: state=disabled
+      when: ansible_os_family == 'RedHat'
+      become: True
     
     # fix directory owner for Nginx
     - file: path=/var/log/nginx owner=root group=root mode=0700
+      when: ansible_os_family == 'RedHat'
     - file: path=/var/log/php-fpm owner=root group=root mode=0700
+      when: ansible_os_family == 'RedHat'
     
     # fix PHP directory owner
     - file: path="/var/lib/php/opcache" owner=nginx group=nginx mode=0770
@@ -43,7 +49,7 @@
       when: ansible_os_family == 'RedHat'
     - file: path="/var/lib/php/wsdlcache" owner=nginx group=nginx mode=0770
       when: ansible_os_family == 'RedHat'
-
+      
     # fix PHP_SELF value problem
     - template: src="fastcgi_params.j2" dest="/etc/nginx/fastcgi_params" owner=root group=root mode=0644
 
@@ -54,8 +60,12 @@
     - template: src={{ playbook_dir }}/templates/php_index.j2 dest=/usr/share/nginx/html/index.php
     - template: src={{ playbook_dir }}/templates/php_index2.j2 dest=/usr/share/nginx/html/index2.php
 
-    # firewall configuration
+    # firewall configuration for RedHat
     - firewalld: service=http permanent=true state=enabled
+      when: ansible_os_family == 'RedHat'
     - firewalld: service=https permanent=true state=enabled
+      when: ansible_os_family == 'RedHat'
     - name: restart firewalld
       service: name=firewalld state=restarted enabled=yes
+      when: ansible_os_family == 'RedHat'
+   

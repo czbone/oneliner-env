@@ -9,7 +9,7 @@
 # server timezone
 ntp_timezone: Asia/Tokyo
 
-# firewall
+# firewall for Debian only
 firewall_allowed_tcp_ports:
   - "22"
   - "25"

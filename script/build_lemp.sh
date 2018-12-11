@@ -100,7 +100,7 @@ cd ${WORK_DIR}
 savefilelist=`ls -1`
 
 # Download archived repository
-echo "Start download repository ${filepath}" 
+echo "Start download GitHub repository ${GITHUB_USER}/${GITHUB_REPO}" 
 curl -s -o ${filepath} -L $url
 
 # Remove old files

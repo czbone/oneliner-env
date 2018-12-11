@@ -10,6 +10,8 @@
 # Description:  This script builds LEMP(Linux Nginx, MariaDB, Linux) server environment with the one-liner command.
 # Version History:
 #               1.0.0  (2018-12-09) initial version
+#               1.1.0  (2018-12-12) fix PHP_SELF incorrect problem
+#                                   fix PHP session not seved problem
 # License:      MIT License
 
 # Define macro parameter

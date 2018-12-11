@@ -36,6 +36,14 @@
     - file: path=/var/log/nginx owner=root group=root mode=0700
     - file: path=/var/log/php-fpm owner=root group=root mode=0700
     
+    # fix PHP directory owner
+    - file: path="/var/lib/php/opcache" owner=nginx group=nginx mode=0770
+      when: ansible_os_family == 'RedHat'
+    - file: path="/var/lib/php/session" owner=nginx group=nginx mode=0770
+      when: ansible_os_family == 'RedHat'
+    - file: path="/var/lib/php/wsdlcache" owner=nginx group=nginx mode=0770
+      when: ansible_os_family == 'RedHat'
+
     # fix PHP_SELF value problem
     - template: src="fastcgi_params.j2" dest="/etc/nginx/fastcgi_params" owner=root group=root mode=0644
 

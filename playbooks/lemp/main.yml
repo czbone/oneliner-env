@@ -36,6 +36,9 @@
     - file: path=/var/log/nginx owner=root group=root mode=0700
     - file: path=/var/log/php-fpm owner=root group=root mode=0700
     
+    # fix PHP_SELF value problem
+    - template: src="fastcgi_params.j2" dest="/etc/nginx/fastcgi_params" owner=root group=root mode=0644
+
     # add root shell environment
     - template: src={{ playbook_dir }}/templates/root_bash_profile.j2 dest=/root/.bash_profile owner=root group=root mode=0644
     

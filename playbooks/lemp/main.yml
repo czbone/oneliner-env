@@ -6,7 +6,7 @@
     - vars/vhosts.yml
     
   vars:
-    php_version: '7.2'
+    php_version: '7.3'
     
     # DB root initial password
     mysql_root_password: "root"

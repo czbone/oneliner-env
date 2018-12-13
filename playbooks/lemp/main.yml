@@ -30,18 +30,25 @@
     - geerlingguy.mysql
     - role: geerlingguy.firewall
       when: ansible_os_family == 'Debian'
-    
+
   tasks:
     - selinux: state=disabled
       when: ansible_os_family == 'RedHat'
       become: True
     
-    # fix directory owner for Nginx
+    # fix directory ownership for Nginx
     - file: path=/var/log/nginx owner=root group=root mode=0700
       when: ansible_os_family == 'RedHat'
     - file: path=/var/log/php-fpm owner=root group=root mode=0700
       when: ansible_os_family == 'RedHat'
-    
+    # fix Nginx log ownership
+    - template: src="logrotate_nginx.j2" dest="/etc/logrotate.d/nginx" owner=root group=root mode=0644
+      when: ansible_os_family == 'RedHat'
+    - file: path="/var/log/nginx/access.log" owner=nginx group=nginx mode=0640
+      when: ansible_os_family == 'RedHat'
+    - file: path="/var/log/nginx/error.log" owner=nginx group=nginx mode=0640
+      when: ansible_os_family == 'RedHat'
+      
     # fix PHP directory owner
     - file: path="/var/lib/php/opcache" owner=nginx group=nginx mode=0770
       when: ansible_os_family == 'RedHat'
@@ -68,4 +75,3 @@
     - name: restart firewalld
       service: name=firewalld state=restarted enabled=yes
       when: ansible_os_family == 'RedHat'
-   

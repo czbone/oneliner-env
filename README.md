@@ -26,7 +26,7 @@
 
 ## LEMP環境構築
 Linux(L),Nginx(N),MariaDB(M),PHP(P)のLEMP環境を作成します。
-PHPはバージョン7.0以上です。
+PHPはバージョン7.3です。
 
 ```
 $ curl https://raw.githubusercontent.com/czbone/oneliner-env/master/script/build_lemp.sh | sh

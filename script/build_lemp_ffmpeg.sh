@@ -17,7 +17,6 @@ readonly GITHUB_USER="czbone"
 readonly GITHUB_REPO="oneliner-env"
 readonly WORK_DIR=/root/${GITHUB_REPO}_work
 readonly PLAYBOOK_LEMP="lemp_media"
-readonly PLAYBOOK_FFMPEG="build_ffmpeg"
 
 # check root user
 readonly USERID=`id | sed 's/uid=\([0-9]*\)(.*/\1/'`
@@ -123,10 +122,6 @@ mv ${destdirname} ${GITHUB_REPO}
 echo ${filename}" unarchived"
 
 # launch ansible
-cd ${WORK_DIR}/${GITHUB_REPO}/playbooks/${PLAYBOOK_LEMP}
-ansible-galaxy install --role-file=requirements.yml --roles-path=/etc/ansible/roles --force
-ansible-playbook -i localhost, main.yml
-
-cd ${WORK_DIR}/${GITHUB_REPO}/playbooks/${PLAYBOOK_FFMPEG}
-ansible-galaxy install --role-file=requirements.yml --roles-path=/etc/ansible/roles --force
-ansible-playbook -i localhost, main.yml
+cd ${WORK_DIR}/${GITHUB_REPO}/playbooks
+ansible-galaxy install --role-file=${PLAYBOOK_LEMP}/requirements.yml --roles-path=/etc/ansible/roles --force
+ansible-playbook -i localhost, ${PLAYBOOK_LEMP}/main.yml

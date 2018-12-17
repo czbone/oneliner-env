@@ -1,0 +1,78 @@
+- hosts: all
+
+  vars_files:
+    - vars/main.yml
+    - vars/vhosts.yml
+    
+  vars:
+    php_version: '7.3'
+    
+    # DB root initial password
+    mysql_root_password: "root"
+
+    # sample database for Japanese testing
+    mysql_databases:
+      - name: "testdb"
+        collation: utf8_general_ci
+    mysql_users:
+      - name: "testuser"
+        password: "test"
+        priv: "testdb.*:ALL"
+    
+  roles:
+    - role: geerlingguy.repo-remi
+      when: ansible_os_family == 'RedHat'
+    - geerlingguy.ntp
+    - geerlingguy.nginx
+    - geerlingguy.php-versions
+    - geerlingguy.php
+    - geerlingguy.mysql
+    - role: geerlingguy.firewall
+      when: ansible_os_family == 'Debian'
+    - nginx_build
+    - ffmpeg_build
+
+  tasks:
+    - selinux: state=disabled
+      when: ansible_os_family == 'RedHat'
+      become: True
+    
+    # fix directory ownership for Nginx
+    - file: path=/var/log/nginx owner=root group=root mode=0700
+      when: ansible_os_family == 'RedHat'
+    - file: path=/var/log/php-fpm owner=root group=root mode=0700
+      when: ansible_os_family == 'RedHat'
+    # fix Nginx log ownership
+    - template: src="logrotate_nginx.j2" dest="/etc/logrotate.d/nginx" owner=root group=root mode=0644
+      when: ansible_os_family == 'RedHat'
+    - file: path="/var/log/nginx/access.log" owner=nginx group=nginx mode=0640
+      when: ansible_os_family == 'RedHat'
+    - file: path="/var/log/nginx/error.log" owner=nginx group=nginx mode=0640
+      when: ansible_os_family == 'RedHat'
+      
+    # fix PHP directory owner
+    - file: path="/var/lib/php/opcache" owner=nginx group=nginx mode=0770
+      when: ansible_os_family == 'RedHat'
+    - file: path="/var/lib/php/session" owner=nginx group=nginx mode=0770
+      when: ansible_os_family == 'RedHat'
+    - file: path="/var/lib/php/wsdlcache" owner=nginx group=nginx mode=0770
+      when: ansible_os_family == 'RedHat'
+      
+    # fix PHP_SELF value problem
+    - template: src="fastcgi_params.j2" dest="/etc/nginx/fastcgi_params" owner=root group=root mode=0644
+
+    # add root shell environment
+    - template: src={{ playbook_dir }}/templates/root_bash_profile.j2 dest=/root/.bash_profile owner=root group=root mode=0644
+    
+    # add php test script
+    - template: src={{ playbook_dir }}/templates/php_index.j2 dest=/usr/share/nginx/html/index.php
+    - template: src={{ playbook_dir }}/templates/php_index2.j2 dest=/usr/share/nginx/html/index2.php
+
+    # firewall configuration for RedHat
+    - firewalld: service=http permanent=true state=enabled
+      when: ansible_os_family == 'RedHat'
+    - firewalld: service=https permanent=true state=enabled
+      when: ansible_os_family == 'RedHat'
+    - name: restart firewalld
+      service: name=firewalld state=restarted enabled=yes
+      when: ansible_os_family == 'RedHat'

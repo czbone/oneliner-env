@@ -1,0 +1,16 @@
+#  hosts: all
+#  become: yes
+#  remote_user: vagrant
+#  vars:
+    nginx_version: nginx-1.15.6
+    nginx_tarball_url: "http://nginx.org/download/{{ nginx_version }}.tar.gz"
+    build_src_dir: "/usr/local/src"
+    nginx_src_dir: "{{ build_src_dir }}/{{ nginx_version }}"
+    nginx_sbin_path: "/usr/sbin/nginx"
+    nginx_conf_path: "/etc/nginx/nginx.conf"
+    nginx_conf_dir: "/etc/nginx"
+    nginx_video_conf: "nginx_video.conf"
+#    nginx_custom_modules: "--with-http_auth_request_module"
+    nginx_custom_modules: "--add-module=nginx-rtmp-module"
+    nginx_rtmp_module_url: "https://github.com/arut/nginx-rtmp-module.git"
+    nginx_rtmp_module_src_dir: "{{ nginx_src_dir }}/nginx-rtmp-module"

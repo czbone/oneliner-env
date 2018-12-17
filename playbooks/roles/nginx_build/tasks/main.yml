@@ -1,0 +1,75 @@
+---
+- name: Compile Nginx from sources
+  include_vars: "vars/main.yml"
+
+###########################################################################
+# Install compile environment
+###########################################################################
+- name: Install git
+  yum: name=git state=latest
+
+- name: Install other library
+  yum:
+    name:
+      - gcc
+      - openssl-devel
+      - pcre-devel
+
+###########################################################################
+# Install new Nginx by build
+###########################################################################
+- name: Downloading Nginx sources
+  get_url:
+    url: "{{ nginx_tarball_url }}"
+    dest: "/tmp/{{ nginx_version }}.tar.gz"
+  register: nginx_source
+
+- name: Unpacking Nginx
+  unarchive:
+    copy: no
+    dest: "{{ build_src_dir }}"
+    src: "{{ nginx_source.dest }}"
+    owner: root
+    group: root
+  when: nginx_source.changed
+  register: nginx_source_unpack
+
+- name: Downloading rtmp module sources
+  git:
+    repo: "{{ nginx_rtmp_module_url }}"
+    dest: "{{ nginx_rtmp_module_src_dir }}"
+  register: nginx_rtmp_source
+    
+- name: Create required Nginx dirs
+  file:
+    path: /etc/nginx
+    state: directory
+    owner: root
+    mode: 0755
+
+- name: Configuring Nginx source with custom modules
+  command: "./configure --sbin-path={{ nginx_sbin_path }} --conf-path={{ nginx_conf_path }} {{ nginx_custom_modules }}"
+  args:
+    chdir: "{{ nginx_src_dir }}"
+  when: nginx_source_unpack.changed
+  register: nginx_configure
+
+- name: Compile and install Nginx
+  shell: make && make install
+  args:
+    chdir: "{{ nginx_src_dir }}"
+  when: nginx_configure.changed
+  notify:
+    - restart webserver
+    - restart php-fpm
+
+- name: Creating Nginx conf file
+  template:
+    src: "{{ nginx_video_conf }}"
+    dest: "{{ nginx_conf_dir }}/{{ nginx_video_conf }}"
+    owner: root
+    group: root
+    mode: 0644
+  notify:
+    - restart webserver
+    - restart php-fpm

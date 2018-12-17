@@ -24,12 +24,20 @@
 新規にOSをインストールしたサーバにrootでログインし、構築したい環境のスクリプトを実行します。
 完了後は一旦サーバを再起動してください。
 
-## LEMP環境構築
+## LEMP環境構築 (所要時間: 約10分)
 Linux(L),Nginx(N),MariaDB(M),PHP(P)のLEMP環境を作成します。
 PHPはバージョン7.3です。
 
 ```
 $ curl https://raw.githubusercontent.com/czbone/oneliner-env/master/script/build_lemp.sh | sh
+```
+## LEMP+FFmpeg環境構築 (所要時間: 約1時間)
+Linux(L),Nginx(N),MariaDB(M),PHP(P)のLEMP環境作成後、必要なライブラリを集めてFFmpegのビルド処理を行います。FFmpegのコンパイルに時間がかかります。
+PHPはバージョン7.3です。
+その他のFFmpegの設定は[こちら](https://github.com/czbone/oneliner-env/blob/master/ffmpeg_spec.txt )です。
+
+```
+$ curl https://raw.githubusercontent.com/czbone/oneliner-env/master/script/build_lemp_ffmpeg.sh | sh
 ```
 
 # 検証環境

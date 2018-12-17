@@ -1,0 +1,60 @@
+##############################################################
+#
+# Configuration for Ansible Galaxy Roles
+#
+##############################################################
+#
+# Basic configuration
+#
+# server timezone
+ntp_timezone: Asia/Tokyo
+
+# firewall for Debian only
+firewall_allowed_tcp_ports:
+  - "22"
+  - "25"
+  - "80"
+
+#
+# PHP configuration
+#
+php_webserver_daemon: nginx
+php_enable_php_fpm: true
+php_fpm_pool_user: nginx
+php_fpm_pool_group: nginx
+
+php_memory_limit: "128M"
+php_max_execution_time: "90"
+php_upload_max_filesize: "50M"
+php_date_timezone: "Asia/Tokyo"
+
+# PHP modules
+php_packages:
+  - php
+  - php-cli
+  - php-common
+  - php-devel
+  - php-gd
+  - php-mbstring
+  - php-mysql
+  - php-pdo
+  - php-xml
+  - php-fpm
+  - php-pecl-zendopcache
+  - php-pecl-apcu
+  - php-intl
+
+#
+# MariaDB configuration
+#
+# configure server encoding
+mysql_config_include_files:
+  - name: 'server.cnf'
+    src: '{{ playbook_dir }}/templates/server.cnf'
+    force: true
+
+#
+# Nginx configuration
+#
+#nginx_conf_template: "{{ playbook_dir }}/templates/nginx.conf.j2"
+#nginx_vhost_template: "{{ playbook_dir }}/templates/vhost.j2"

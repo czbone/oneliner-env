@@ -1,0 +1,60 @@
+<?php
+// #######################################################################
+// テスト用サンプル
+// ・デフォルトのエンコーディング(UTF-8)の確認
+// ・日本語データの登録、取得
+// #######################################################################
+
+$host = '127.0.0.1';
+$db   = 'testdb';
+$user = 'testuser';
+$pass = 'test';
+//$charset = 'utf8mb4';
+
+//$dsn = "mysql:host=$host;dbname=$db;charset=$charset";
+$dsn = "mysql:host=$host;dbname=$db";
+$options = [
+    PDO::ATTR_ERRMODE            => PDO::ERRMODE_EXCEPTION
+//    PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
+//    PDO::ATTR_EMULATE_PREPARES   => false,
+];
+try {
+     $pdo = new PDO($dsn, $user, $pass, $options);
+     
+    // SQL作成
+    $sql = 'CREATE TABLE IF NOT EXISTS user (
+        id INT AUTO_INCREMENT PRIMARY KEY,
+        name VARCHAR(20)
+    )';
+
+    // SQL実行
+    $res = $pdo->query($sql);
+} catch (PDOException $e) {
+     throw new PDOException($e->getMessage(), (int)$e->getCode());
+}
+echo 'DB connected...<br />';
+
+try {
+    $pdo->beginTransaction();
+    
+    $pdo->exec('TRUNCATE TABLE user');
+    
+    $stmt = $pdo->prepare("INSERT INTO user (name) VALUES (?)");
+    foreach (['太郎','花子','一郎','次郎'] as $name)
+    {
+        $stmt->execute([$name]);
+    }
+    $pdo->commit();
+
+    $sql = 'SELECT * FROM user ORDER BY id';
+    $stmt = $pdo->query($sql);
+
+    while($result = $stmt->fetch(PDO::FETCH_ASSOC)){
+        echo $result['id'];
+        echo $result['name'] . '<br>';
+    }
+}catch (PDOException $e){
+    $pdo->rollback();
+    throw new PDOException($e->getMessage(), (int)$e->getCode());
+}
+?>

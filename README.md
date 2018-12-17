@@ -32,9 +32,10 @@ PHPはバージョン7.3です。
 $ curl https://raw.githubusercontent.com/czbone/oneliner-env/master/script/build_lemp.sh | sh
 ```
 ## LEMP+FFmpeg環境構築 (所要時間: 約1時間)
-Linux(L),Nginx(N),MariaDB(M),PHP(P)のLEMP環境作成後、必要なライブラリを集めてFFmpegのビルド処理を行います。FFmpegのコンパイルに時間がかかります。
+LEMP環境作成後、必要なライブラリを集めて最新のFFmpeg v4.1のビルド処理を行います。FFmpegのコンパイルに時間がかかります。
+
 PHPはバージョン7.3です。
-その他のFFmpegの設定は[こちら](https://github.com/czbone/oneliner-env/blob/master/ffmpeg_spec.txt )です。
+FFmpegはコーデックにAV1やh265等に対応しています。その他のFFmpegの設定は[こちら](https://github.com/czbone/oneliner-env/blob/master/ffmpeg_spec.txt )を参照してください。
 
 ```
 $ curl https://raw.githubusercontent.com/czbone/oneliner-env/master/script/build_lemp_ffmpeg.sh | sh

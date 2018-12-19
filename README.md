@@ -31,11 +31,14 @@ PHPはバージョン7.3です。
 ```
 $ curl https://raw.githubusercontent.com/czbone/oneliner-env/master/script/build_lemp.sh | sh
 ```
-## メディアサーバ(LEMP+FFmpeg)環境構築 (所要時間: 約1時間)
-LEMP環境作成後、必要なライブラリを集めて最新のFFmpeg v4.1のビルド処理を行います。FFmpegのコンパイルには時間がかかります。
+## 動画配信サーバ(LEMP+FFmpeg)環境構築 (所要時間: 約1時間)
+LEMP環境作成後、必要なライブラリを集めて最新のFFmpegのビルド処理を行います。FFmpegのコンパイルには時間がかかります。
 
-PHPはバージョン7.3です。
 FFmpegはコーデックにAV1やh265等に対応しています。その他のFFmpegの設定は[こちら](https://github.com/czbone/oneliner-env/blob/master/ffmpeg_spec.txt )を参照してください。
+
+###バージョン
+- PHP 7.3
+- FFmpeg 4.1
 
 ```
 $ curl https://raw.githubusercontent.com/czbone/oneliner-env/master/script/build_lemp_ffmpeg.sh | sh

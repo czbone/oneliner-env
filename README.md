@@ -26,7 +26,11 @@
 
 ## Webサーバ(LEMP)環境構築 (所要時間: 約10分)
 Linux(L),Nginx(N),MariaDB(M),PHP(P)のLEMP環境を作成します。
-PHPはバージョン7.3です。
+
+### バージョン
+- Nginx 1.14.0
+- PHP 7.3
+- MariaDB 5.5.60
 
 ```
 $ curl https://raw.githubusercontent.com/czbone/oneliner-env/master/script/build_lemp.sh | sh
@@ -36,8 +40,10 @@ LEMP環境作成後、必要なライブラリを集めて最新のFFmpegのビルド処理を行います。FFmp
 
 FFmpegはコーデックにAV1やh265等に対応しています。その他のFFmpegの設定は[こちら](https://github.com/czbone/oneliner-env/blob/master/ffmpeg_spec.txt )を参照してください。
 
-###バージョン
+### バージョン
+- Nginx 1.15.6
 - PHP 7.3
+- MariaDB 5.5.60
 - FFmpeg 4.1
 
 ```

@@ -5,6 +5,7 @@
 - geerlingguy.nginx
 - geerlingguy.php-versions
 - geerlingguy.php
+- geerlingguy.php-mysql
 - geerlingguy.mysql
 - src: geerlingguy.firewall
   when: ansible_os_family == 'Debian'

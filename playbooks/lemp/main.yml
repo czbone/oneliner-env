@@ -1,12 +1,14 @@
 - hosts: localhost
   connection: local
-  
+
   vars_files:
     - vars/main.yml
-    - vars/vhosts.yml
+    - vars/vhosts_{{ ansible_os_family }}.yml
     
   vars:
+    ##### Must check PHP version! #####
     php_version: '7.3'
+    php_default_version_debian: "7.3"
     
     # DB root initial password
     mysql_root_password: "root"
@@ -27,6 +29,7 @@
     - geerlingguy.nginx
     - geerlingguy.php-versions
     - geerlingguy.php
+    - geerlingguy.php-mysql
     - geerlingguy.mysql
     - role: geerlingguy.firewall
       when: ansible_os_family == 'Debian'
@@ -36,6 +39,15 @@
       when: ansible_os_family == 'RedHat'
       become: True
     
+    # install Japanese environment in Ubuntu
+    - name: Install Japanese environment
+      apt:
+        name:
+          - language-pack-ja-base
+          - language-pack-ja
+          - ibus-mozc
+      when: ansible_os_family == 'Debian'
+  
     # fix directory ownership for Nginx
     - file: path=/var/log/nginx owner=root group=root mode=0700
       when: ansible_os_family == 'RedHat'
@@ -61,11 +73,14 @@
     - template: src="fastcgi_params.j2" dest="/etc/nginx/fastcgi_params" owner=root group=root mode=0644
 
     # add root shell environment
-    - template: src={{ playbook_dir }}/templates/root_bash_profile.j2 dest=/root/.bash_profile owner=root group=root mode=0644
-    
-    # add php test script
-    - template: src={{ playbook_dir }}/templates/php_index.j2 dest=/usr/share/nginx/html/index.php
-    - template: src={{ playbook_dir }}/templates/php_index2.j2 dest=/usr/share/nginx/html/index2.php
+    - template: src="root_bash_profile.j2" dest="/root/.bash_profile" owner=root group=root mode=0644
+      when: ansible_os_family == 'RedHat'
+    - template: src="root_bash_profile.j2" dest="/root/.profile" owner=root group=root mode=0644
+      when: ansible_os_family == 'Debian'
+      
+    # add php test scripts in default site
+    - template: src="php_index.j2" dest="/var/www/html/index.php"
+    - template: src="php_index2.j2" dest="/var/www/html/index2.php"
 
     # firewall configuration for RedHat
     - firewalld: service=http permanent=true state=enabled

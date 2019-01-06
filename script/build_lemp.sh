@@ -2,9 +2,9 @@
 # 
 # Script Name: build_lemp.sh
 #
-# Version:      1.2.0
+# Version:      2.0.0
 # Author:       Naoki Hirata
-# Date:         2018-12-12
+# Date:         2019-01-06
 # Usage:        build_lemp.sh [-test]
 # Options:      -test      test mode execution with the latest source package
 # Description:  This script builds LEMP(Linux Nginx, MariaDB, Linux) server environment with the one-liner command.
@@ -13,6 +13,7 @@
 #               1.1.0  (2018-12-12) fix PHP_SELF incorrect problem
 #                                   fix PHP session not seved problem
 #               1.2.0  (2018-12-12) update for PHP v7.3
+#               2.0.0  (2019-01-06) support Ubuntu18
 # License:      MIT License
 
 # Define macro parameter
@@ -31,7 +32,7 @@ then
 fi
 
 # Check os version
-declare OS="unsupported os"
+OS="unsupported os"
 
 if [ "$(uname)" == 'Darwin' ]; then
     OS='Mac'
@@ -74,7 +75,7 @@ else
     readonly TEST_MODE="false"
 fi
 
-declare INSTALL_PACKAGE_CMD=""
+INSTALL_PACKAGE_CMD=""
 if [ $OS == 'CentOS' ]; then
     INSTALL_PACKAGE_CMD="yum -y install"
 elif [ $OS == 'Ubuntu' ]; then

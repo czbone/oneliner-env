@@ -79,7 +79,7 @@ declare INSTALL_PACKAGE_CMD=""
 if [ $OS == 'CentOS' ]; then
     INSTALL_PACKAGE_CMD="yum -y install"
 elif [ $OS == 'Ubuntu' ]; then
-    INSTALL_PACKAGE_CMD="apt install"
+    INSTALL_PACKAGE_CMD="apt -y install"
 fi
 #$INSTALL_PACKAGE_CMD git
 $INSTALL_PACKAGE_CMD ansible

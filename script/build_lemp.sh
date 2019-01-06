@@ -32,7 +32,7 @@ then
 fi
 
 # Check os version
-OS="unsupported os"
+declare OS="unsupported os"
 
 if [ "$(uname)" == 'Darwin' ]; then
     OS='Mac'
@@ -75,11 +75,11 @@ else
     readonly TEST_MODE="false"
 fi
 
-INSTALL_PACKAGE_CMD=""
+declare INSTALL_PACKAGE_CMD=""
 if [ $OS == 'CentOS' ]; then
     INSTALL_PACKAGE_CMD="yum -y install"
 elif [ $OS == 'Ubuntu' ]; then
-    INSTALL_PACKAGE_CMD="apt-get install"
+    INSTALL_PACKAGE_CMD="apt install"
 fi
 #$INSTALL_PACKAGE_CMD git
 $INSTALL_PACKAGE_CMD ansible

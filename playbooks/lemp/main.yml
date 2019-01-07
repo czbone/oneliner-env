@@ -10,10 +10,6 @@
     php_version: '7.3'
     php_default_version_debian: "7.3"
     
-    # test
-    php_fpm_pool_user: www-data
-    php_fpm_pool_group: www-data
-    
     # DB root initial password
     mysql_root_password: "root"
 
@@ -30,10 +26,10 @@
     - role: geerlingguy.repo-remi
       when: ansible_os_family == 'RedHat'
     - geerlingguy.ntp
-    - geerlingguy.nginx
     - geerlingguy.php-versions
     - geerlingguy.php
     - geerlingguy.php-mysql
+    - geerlingguy.nginx
     - geerlingguy.mysql
     - role: geerlingguy.firewall
       when: ansible_os_family == 'Debian'

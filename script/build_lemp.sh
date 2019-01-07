@@ -67,7 +67,7 @@ echo "########################################################################"
 echo "# $OS LEMP                                                             #"
 echo "# START BUILDING ENVIRONMENT                                           #"
 echo "########################################################################"
-echo "param=##$1##"
+
 # Get test mode
 if [ "$1" == '-test' ]; then
     readonly TEST_MODE="true"

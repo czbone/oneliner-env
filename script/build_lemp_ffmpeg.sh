@@ -66,7 +66,7 @@ echo "# START BUILDING ENVIRONMENT                                           #"
 echo "########################################################################"
 
 # Get test mode
-if [ "$1" = -test ]; then
+if [ "$1" == '-test' ]; then
     readonly TEST_MODE="true"
     
     echo "################# START TEST MODE #################"

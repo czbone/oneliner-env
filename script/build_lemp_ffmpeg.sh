@@ -102,6 +102,7 @@ cd ${WORK_DIR}
 savefilelist=`ls -1`
 
 # Download archived repository
+echo "########################################################################"
 echo "Start download GitHub repository ${GITHUB_USER}/${GITHUB_REPO}" 
 curl -s -o ${filepath} -L $url
 

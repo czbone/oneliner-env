@@ -72,9 +72,8 @@
     # fix PHP_SELF value problem
     - template: src="fastcgi_params.j2" dest="/etc/nginx/fastcgi_params" owner=root group=root mode=0644
 
-    - lineinfile: dest="{{ php_fpm_pool_conf_path }}" state=present regexp: "^user.?=.+$" line: "user = www-data"
-      when: ansible_os_family == 'Debian'
-    - lineinfile: dest="{{ php_fpm_pool_conf_path }}" state=present regexp: "^group.?=.+$" line: "group = www-data"
+    # fix PHP-FPM problem
+    - template: src="php-fpm_www.conf.j2" dest="{{ php_fpm_pool_conf_path }}" owner=root group=root mode=0644
       when: ansible_os_family == 'Debian'
       
     # add root shell environment

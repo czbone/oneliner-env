@@ -71,7 +71,21 @@
       
     # fix PHP_SELF value problem
     - template: src="fastcgi_params.j2" dest="/etc/nginx/fastcgi_params" owner=root group=root mode=0644
-    
+
+    # Testing...
+    - name: fix PHP-FPM problem
+      lineinfile: >-
+        dest: "{{ php_fpm_pool_conf_path }}"
+        regexp: "{{ item.regexp }}"
+        line: "{{ item.line }}"
+        state: present
+      with_items:
+        - regexp: "^user.?=.+$"
+          line: "user = {{ php_fpm_pool_user }}"
+        - regexp: "^group.?=.+$"
+          line: "group = {{ php_fpm_pool_group }}"
+      when: ansible_os_family == 'Debian'
+      
     # add root shell environment
     - template: src="root_bash_profile.j2" dest="/root/.bash_profile" owner=root group=root mode=0644
       when: ansible_os_family == 'RedHat'
@@ -90,17 +104,3 @@
     - name: restart firewalld
       service: name=firewalld state=restarted enabled=yes
       when: ansible_os_family == 'RedHat'
-
-    # Testing...
-    - name: fix PHP-FPM problem
-      lineinfile: >-
-        dest: "{{ php_fpm_pool_conf_path }}"
-        regexp: "{{ item.regexp }}"
-        line: "{{ item.line }}"
-        state: present
-      with_items:
-        - regexp: "^user.?=.+$"
-          line: "user = {{ php_fpm_pool_user }}"
-        - regexp: "^group.?=.+$"
-          line: "group = {{ php_fpm_pool_group }}"
-      when: ansible_os_family == 'Debian'

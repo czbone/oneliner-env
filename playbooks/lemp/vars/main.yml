@@ -19,7 +19,7 @@ firewall_allowed_tcp_ports:
 # PHP configuration
 #
 php_webserver_daemon: "nginx"
-#php_enable_php_fpm: true
+php_enable_php_fpm: true
 
 php_memory_limit: "128M"
 php_max_execution_time: "90"

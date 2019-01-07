@@ -71,6 +71,8 @@ echo "########################################################################"
 # Get test mode
 if [[  "$1" = '-test'  ]]; then
     readonly TEST_MODE="true"
+    
+    echo "################# START TEST MODE #################"
 else
     readonly TEST_MODE="false"
 fi
@@ -81,12 +83,11 @@ if [ $OS == 'CentOS' ]; then
 elif [ $OS == 'Ubuntu' ]; then
     INSTALL_PACKAGE_CMD="apt -y install"
 fi
-#$INSTALL_PACKAGE_CMD git
+
 $INSTALL_PACKAGE_CMD ansible
 
 # Download the latest repository archive
 if [ $TEST_MODE == 'true' ]; then
-    echo "################# START TEST MODE #################"
     url="https://github.com/${GITHUB_USER}/${GITHUB_REPO}/archive/master.tar.gz"
     version="new"
 else

@@ -67,9 +67,9 @@ echo "########################################################################"
 echo "# $OS LEMP                                                             #"
 echo "# START BUILDING ENVIRONMENT                                           #"
 echo "########################################################################"
-echo "Param={$1}"
+echo "Param=$1"
 # Get test mode
-if [[  "$1" = '-test'  ]]; then
+if [ $1 = '-test' ]; then
     readonly TEST_MODE="true"
     
     echo "################# START TEST MODE #################"

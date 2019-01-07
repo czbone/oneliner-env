@@ -33,7 +33,7 @@ Linux(L),Nginx(N),MariaDB(M),PHP(P)のLEMP環境を作成します。
 - MariaDB 5.5.60
 
 ```
-$ curl https://raw.githubusercontent.com/czbone/oneliner-env/master/script/build_lemp.sh | sh
+$ curl https://raw.githubusercontent.com/czbone/oneliner-env/master/script/build_lemp.sh | bash
 ```
 ## 動画配信サーバ(LEMP+FFmpeg)環境構築 (所要時間: 約1時間)
 LEMP環境作成後、必要なライブラリを集めて最新のFFmpegのビルド処理を行います。FFmpegのビルドには時間がかかります。
@@ -48,7 +48,7 @@ FFmpegはコーデックにAV1やh265等に対応しています。その他のFFmpegの設定は[こちら](
 - FFmpeg 4.1
 
 ```
-$ curl https://raw.githubusercontent.com/czbone/oneliner-env/master/script/build_lemp_ffmpeg.sh | sh
+$ curl https://raw.githubusercontent.com/czbone/oneliner-env/master/script/build_lemp_ffmpeg.sh | bash
 ```
 
 # 検証環境

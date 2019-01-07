@@ -81,9 +81,9 @@
         state: present
       with_items:
         - regexp: "^user.?=.+$"
-          line: "user = {{ php_fpm_pool_user }}"
+          line: "user = www-data"
         - regexp: "^group.?=.+$"
-          line: "group = {{ php_fpm_pool_group }}"
+          line: "group = www-data"
       when: ansible_os_family == 'Debian'
       
     # add root shell environment

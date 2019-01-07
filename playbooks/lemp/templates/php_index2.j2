@@ -1,8 +1,8 @@
 <?php
 // #######################################################################
-// ƒeƒXƒg—pƒTƒ“ƒvƒ‹
-// EƒfƒtƒHƒ‹ƒg‚ÌƒGƒ“ƒR[ƒfƒBƒ“ƒO(UTF-8)‚ÌŠm”F
-// E“ú–{Œêƒf[ƒ^‚Ì“o˜^AŽæ“¾
+// ãƒ†ã‚¹ãƒˆç”¨ã‚µãƒ³ãƒ—ãƒ«
+// ãƒ»ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã®ã‚¨ãƒ³ã‚³ãƒ¼ãƒ‡ã‚£ãƒ³ã‚°(UTF-8)ã®ç¢ºèª
+// ãƒ»æ—¥æœ¬èªžãƒ‡ãƒ¼ã‚¿ã®ç™»éŒ²ã€å–å¾—
 // #######################################################################
 
 $host = '127.0.0.1';
@@ -21,13 +21,13 @@ $options = [
 try {
      $pdo = new PDO($dsn, $user, $pass, $options);
      
-    // SQLì¬
+    // SQLä½œæˆ
     $sql = 'CREATE TABLE IF NOT EXISTS user (
         id INT AUTO_INCREMENT PRIMARY KEY,
         name VARCHAR(20)
     )';
 
-    // SQLŽÀs
+    // SQLå®Ÿè¡Œ
     $res = $pdo->query($sql);
 } catch (PDOException $e) {
      throw new PDOException($e->getMessage(), (int)$e->getCode());
@@ -40,7 +40,7 @@ try {
     $pdo->exec('TRUNCATE TABLE user');
     
     $stmt = $pdo->prepare("INSERT INTO user (name) VALUES (?)");
-    foreach (['‘¾˜Y','‰ÔŽq','ˆê˜Y','ŽŸ˜Y'] as $name)
+    foreach (['å¤ªéƒŽ','èŠ±å­','ä¸€éƒŽ','æ¬¡éƒŽ'] as $name)
     {
         $stmt->execute([$name]);
     }

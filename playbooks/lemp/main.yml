@@ -26,10 +26,10 @@
     - role: geerlingguy.repo-remi
       when: ansible_os_family == 'RedHat'
     - geerlingguy.ntp
+    - geerlingguy.nginx
     - geerlingguy.php-versions
     - geerlingguy.php
     - geerlingguy.php-mysql
-    - geerlingguy.nginx
     - geerlingguy.mysql
     - role: geerlingguy.firewall
       when: ansible_os_family == 'Debian'

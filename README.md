@@ -7,7 +7,7 @@
 それ以上の環境が必要な場合は、出来た環境からさらに独自のカスタマイズを行うのがベターです。
 
 ## 対象OS
-- CentOS 7
+- CentOS 7, Ubuntu18
 
 ## ライセンス
 
@@ -53,4 +53,4 @@ $ curl https://raw.githubusercontent.com/czbone/oneliner-env/master/script/build
 
 # 検証環境
 - Vagrant Box 「centos/7」
-- さくらVPS 「CentOS7」
+- さくらVPS 「CentOS7」(標準OS), 「Ubuntu18.04 amd64」(カスタムOS)

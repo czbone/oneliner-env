@@ -9,7 +9,6 @@
       - wget
       - autoconf
       - automake
-#      - freetype-devel
       - gcc
       - gcc-c++
       - libtool
@@ -26,17 +25,12 @@
       - wget
       - autoconf
       - automake
-#      - freetype-devel
-#      - gcc
-#      - gcc-c++
       - build-essential
       - libtool
-#      - make
       - cmake
       - mercurial
       - pkg-config
       - zlib1g-dev
-#      - libnuma-dev
   when: ansible_os_family == 'Debian'
   
 - name: Make cmake symbolic link

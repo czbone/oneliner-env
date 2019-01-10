@@ -5,23 +5,35 @@
 ###########################################################################
 # Install compile environment
 ###########################################################################
-- name: Install git
+- name: Install git by yum
   yum: name=git state=latest
-
-- name: Install other library
+  when: ansible_os_family == 'RedHat'
+- name: Install git by apt
+  apt: name=git state=latest
+  when: ansible_os_family == 'Debian'
+- name: Install other library for CentOS by yum
   yum:
     name:
       - gcc
       - openssl-devel
       - pcre-devel
-
+  when: ansible_os_family == 'RedHat'
+- name: Install other library for Ubuntu by apt
+  apt:
+    name:
+      - build-essential
+      - libssl-dev
+      - libpcre3-dev
+      - zlib1g-dev
+  when: ansible_os_family == 'Debian'
+  
 ###########################################################################
 # Install new Nginx by build
 ###########################################################################
 - name: Downloading Nginx sources
   get_url:
     url: "{{ nginx_tarball_url }}"
-    dest: "/tmp/{{ nginx_version }}.tar.gz"
+    dest: "/tmp/nginx-{{ nginx_version }}.tar.gz"
   register: nginx_source
 
 - name: Unpacking Nginx
@@ -62,6 +74,10 @@
   notify:
     - restart webserver
     - restart php-fpm
+
+# remove default sample files.
+- file: path="/var/www/html/index.nginx-debian.html" state=absent
+  when: ansible_os_family == 'Debian'
 
 - name: Creating Nginx conf file
   template:

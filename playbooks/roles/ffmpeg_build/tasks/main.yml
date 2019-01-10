@@ -2,7 +2,7 @@
 - name: Compile FFMpeg from sources
   include_vars: "vars/main.yml"
   
-- name: Install base library
+- name: Install base library for CentOS by yum
   yum:
     name:
       - git
@@ -18,12 +18,33 @@
       - mercurial
       - pkgconfig
       - zlib-devel
-
+  when: ansible_os_family == 'RedHat'
+- name: Install base library for Ubuntu by apt
+  apt:
+    name:
+      - git
+      - wget
+      - autoconf
+      - automake
+#      - freetype-devel
+#      - gcc
+#      - gcc-c++
+      - build-essential
+      - libtool
+#      - make
+      - cmake
+      - mercurial
+      - pkg-config
+      - zlib1g-dev
+#      - libnuma-dev
+  when: ansible_os_family == 'Debian'
+  
 - name: Make cmake symbolic link
   file:
     src: /usr/bin/cmake3
     dest: /usr/bin/cmake
     state: link
+  when: ansible_os_family == 'RedHat'
 
 - name: Create FFmpeg directory
   file: path="{{ item }}" state=directory owner=root group=root mode=0755
@@ -48,6 +69,21 @@
     make install
     chdir="{{ ffmpeg_src_dir }}/nasm-{{ nasm_version }}"
 
+- name: Download and Extract Yasm gzip archive
+  unarchive:
+    src: "https://www.tortall.net/projects/yasm/releases/yasm-{{ yasm_version }}.tar.gz"
+    dest: "{{ ffmpeg_src_dir }}"
+    remote_src: yes
+- name: Compile Yasm
+  shell: >-
+    ./configure --prefix="{{ ffmpeg_build_dir }}" --bindir="{{ tool_bin_dir }}" &&
+    make
+    chdir="{{ ffmpeg_src_dir }}/yasm-{{ yasm_version }}"
+- name: Install Yasm
+  shell: >-
+    make install
+    chdir="{{ ffmpeg_src_dir }}/yasm-{{ yasm_version }}"
+    
 ### BASE LIBRARY BUILD ###
 - name: Download and Extract Freetype archive
   unarchive:
@@ -69,7 +105,7 @@
   git:
     repo: "git://git.videolan.org/x264"
     dest: "{{ ffmpeg_src_dir }}/x264"
-- name: Compile libx264
+- name: Compile libx264 for CentOS
   shell: >-
     PKG_CONFIG_PATH="{{ ffmpeg_build_dir }}/lib/pkgconfig" &&
     ./configure --prefix="{{ ffmpeg_build_dir }}" --bindir="{{ ffmpeg_bin_dir }}" --enable-static &&
@@ -78,6 +114,17 @@
   # compiling libx264 needs NASM command
   environment:
     PATH: "{{ tool_bin_dir }}:{{ ansible_env.PATH }}"
+  when: ansible_os_family == 'RedHat'
+- name: Compile libx264 for Ubuntu
+  shell: >-
+    PKG_CONFIG_PATH="{{ ffmpeg_build_dir }}/lib/pkgconfig" &&
+    ./configure --prefix="{{ ffmpeg_build_dir }}" --bindir="{{ ffmpeg_bin_dir }}" --enable-static --enable-pic &&
+    make
+    chdir="{{ ffmpeg_src_dir }}/x264"
+  # compiling libx264 needs NASM command
+  environment:
+    PATH: "{{ tool_bin_dir }}:{{ ansible_env.PATH }}"
+  when: ansible_os_family == 'Debian'
 - name: Install libx264
   shell: >-
     make install

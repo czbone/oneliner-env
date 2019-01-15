@@ -1,0 +1,10 @@
+nginx_vhosts:
+  - listen: "80 default_server"
+    server_name: "default server"
+    root: "/usr/share/nginx/html"
+    index: "index.php index.html index.htm"
+#    template: "{{ playbook_dir }}/templates/vhost.j2"
+    template: "{{ playbook_dir }}/templates/default.conf"
+
+php_fpm_pool_user: nginx
+php_fpm_pool_group: nginx

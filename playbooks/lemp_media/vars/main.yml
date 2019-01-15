@@ -18,10 +18,8 @@ firewall_allowed_tcp_ports:
 #
 # PHP configuration
 #
-php_webserver_daemon: nginx
+php_webserver_daemon: "nginx"
 php_enable_php_fpm: true
-php_fpm_pool_user: nginx
-php_fpm_pool_group: nginx
 
 php_memory_limit: "128M"
 php_max_execution_time: "90"
@@ -56,5 +54,6 @@ mysql_config_include_files:
 #
 # Nginx configuration
 #
-#nginx_conf_template: "{{ playbook_dir }}/templates/nginx.conf.j2"
-#nginx_vhost_template: "{{ playbook_dir }}/templates/vhost.j2"
+# Remove default site configuration file
+nginx_remove_default_vhost: true
+

@@ -75,6 +75,18 @@
     - restart webserver
     - restart php-fpm
 
+- name: Clean up unused config files
+  file:
+    path: "{{ nginx_conf_dir }}/{{ item }}"
+    state: absent
+  with_items:
+    - fastcgi.conf.default
+    - fastcgi_params.default
+    - mime.types.default
+    - nginx.conf.default
+    - scgi_params.default
+    - uwsgi_params.default
+
 # remove default sample files.
 - file: path="/var/www/html/index.nginx-debian.html" state=absent
   when: ansible_os_family == 'Debian'

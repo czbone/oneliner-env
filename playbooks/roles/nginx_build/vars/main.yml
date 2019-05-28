@@ -1,4 +1,4 @@
-nginx_version: 1.15.8
+nginx_version: 1.17.0
 nginx_tarball_url: "http://nginx.org/download/nginx-{{ nginx_version }}.tar.gz"
 build_src_dir: "/usr/local/src"
 nginx_src_dir: "{{ build_src_dir }}/nginx-{{ nginx_version }}"

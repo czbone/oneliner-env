@@ -42,8 +42,8 @@ Nginxは最新ソースにRTMPモジュールを追加してビルドしています。
 FFmpegはコーデックにAV1やh265等に対応しています。その他のFFmpegの設定は[こちら](https://github.com/czbone/oneliner-env/blob/master/ffmpeg_spec.txt )を参照してください。
 
 ### バージョン
-- Nginx 1.15.8
-- PHP 7.3.4
+- Nginx 1.17.0
+- PHP 7.3.6
 - MariaDB 5.5.60(CentOS),MySQL 5.7.24(Ubuntu)
 - FFmpeg 4.1.3
 

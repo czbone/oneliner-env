@@ -8,3 +8,8 @@ nginx_vhosts:
 
 php_fpm_pool_user: www-data
 php_fpm_pool_group: www-data
+
+#
+# MySQL sql_mode
+#
+mysql_sql_mode: 'ONLY_FULL_GROUP_BY,NO_ZERO_IN_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION'

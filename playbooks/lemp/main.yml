@@ -14,10 +14,20 @@
     mysql_root_password: "root"
 
     # sample database for Japanese testing
+    # MySQL version
     mysql_databases:
       - name: "testdb"
         collation: utf8_general_ci
     mysql_users:
+      - name: "testuser"
+        password: "test"
+        priv: "testdb.*:ALL"
+
+    # MariaDB version
+    mariadb_databases:
+      - name: "testdb"
+        collation: utf8_general_ci
+    mariadb_users:
       - name: "testuser"
         password: "test"
         priv: "testdb.*:ALL"
@@ -30,7 +40,10 @@
     - geerlingguy.php-versions
     - geerlingguy.php
     - geerlingguy.php-mysql
-    - geerlingguy.mysql
+    - role: bertvv.mariadb
+      when: ansible_os_family == 'RedHat'
+    - role: geerlingguy.mysql
+      when: ansible_os_family == 'Debian'
     - role: geerlingguy.firewall
       when: ansible_os_family == 'Debian'
 
@@ -47,6 +60,14 @@
           - language-pack-ja
           - ibus-mozc
       when: ansible_os_family == 'Debian'
+
+    # fix mariadb config file
+    - name: Install server config file
+      template:
+        src: etc_my.cnf.d_server.cnf.j2
+        dest: "{{ mariadb_config_server }}"
+      notify: restart mariadb
+      when: ansible_os_family == 'RedHat'
   
     # fix directory ownership for Nginx
     - file: path=/var/log/nginx owner=root group=root mode=0700
@@ -68,9 +89,11 @@
       when: ansible_os_family == 'RedHat'
     - file: path="/var/lib/php/wsdlcache" owner=nginx group=nginx mode=0770
       when: ansible_os_family == 'RedHat'
-      
+    
+    # modify nginx config file
     # fix PHP_SELF value problem
     - template: src="fastcgi_params.j2" dest="/etc/nginx/fastcgi_params" owner=root group=root mode=0644
+    - template: src="mime.types.j2" dest="/etc/nginx/mime.types" owner=root group=root mode=0644
     
     # add root shell environment
     - template: src="root_bash_profile.j2" dest="/root/.bash_profile" owner=root group=root mode=0644

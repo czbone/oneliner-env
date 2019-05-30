@@ -8,3 +8,8 @@ nginx_vhosts:
 
 php_fpm_pool_user: nginx
 php_fpm_pool_group: nginx
+
+#
+# MariaDB sql_mode
+#
+mariadb_sql_mode: 'ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION'

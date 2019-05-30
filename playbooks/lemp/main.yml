@@ -15,13 +15,13 @@
 
     # sample database for Japanese testing
     # MySQL version
-    mysql_databases:
-      - name: "testdb"
-        collation: utf8_general_ci
-    mysql_users:
-      - name: "testuser"
-        password: "test"
-        priv: "testdb.*:ALL"
+#    mysql_databases:
+#      - name: "testdb"
+#        collation: utf8_general_ci
+#    mysql_users:
+#      - name: "testuser"
+#        password: "test"
+#        priv: "testdb.*:ALL"
 
     # MariaDB version
     mariadb_databases:
@@ -43,7 +43,7 @@
     - geerlingguy.php-mysql
     - role: bertvv.mariadb
       when: ansible_os_family == 'RedHat'
-    - role: geerlingguy.mysql
+    - role: tschifftner.mariadb
       when: ansible_os_family == 'Debian'
     - role: geerlingguy.firewall
       when: ansible_os_family == 'Debian'

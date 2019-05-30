@@ -6,8 +6,9 @@
 - geerlingguy.php-versions
 - geerlingguy.php
 - geerlingguy.php-mysql
-- geerlingguy.mysql
 - src: geerlingguy.firewall
   when: ansible_os_family == 'Debian'
 - src: bertvv.mariadb
   when: ansible_os_family == 'RedHat'
+- src: tschifftner.mariadb
+  when: ansible_os_family == 'Debian'

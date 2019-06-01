@@ -9,6 +9,17 @@
     gpgkey: https://yum.mariadb.org/RPM-GPG-KEY-MariaDB
     gpgcheck: true
   tags: mariadb
+  when: ansible_os_family == 'RedHat'
+
+- name: Install mariadb apt repositories
+  apt_repository:
+    repo: "{{ item }}"
+    state: present
+    update_cache: yes
+    filename: mariadb
+  register: mariadb_install_packages
+  with_items: '{{mariadb_apt_repositories}}'
+  when: ansible_os_family == 'Debian'
 
 - name: Install packages
   package:
@@ -16,3 +27,4 @@
     state: installed
   with_items: "{{ mariadb_packages }}"
   tags: mariadb
+

@@ -41,12 +41,13 @@
     - geerlingguy.php-versions
     - geerlingguy.php
     - geerlingguy.php-mysql
-    - role: bertvv.mariadb
-      when: ansible_os_family == 'RedHat'
-    - role: geerlingguy.mysql
-      when: ansible_os_family == 'Debian'
+#    - role: bertvv.mariadb
+#      when: ansible_os_family == 'RedHat'
+#    - role: geerlingguy.mysql
+#      when: ansible_os_family == 'Debian'
     - role: geerlingguy.firewall
       when: ansible_os_family == 'Debian'
+    - mariadb
 
   tasks:
     - selinux: state=disabled

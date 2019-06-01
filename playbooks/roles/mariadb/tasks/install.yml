@@ -11,6 +11,13 @@
   tags: mariadb
   when: ansible_os_family == 'RedHat'
 
+#- name: Install mariadb keys
+#  apt_key:
+#    keyserver: "{{ mariadb_apt_keyserver }}"
+#    id: "{{ mariadb_apt_keyid }}"
+#    state: present
+#  when: ansible_os_family == 'Debian'
+
 - name: Install mariadb apt repositories
   apt_repository:
     repo: "{{ item }}"

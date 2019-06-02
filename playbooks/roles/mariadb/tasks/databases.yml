@@ -12,6 +12,8 @@
 - name: Create user defined databases
   mysql_db:
     name: "{{ item.name }}"
+    collation: "{{ item.collation | default('utf8_general_ci') }}"
+    encoding: "{{ item.encoding | default('utf8') }}"
     login_user: root
     login_password: "{{ mariadb_root_password }}"
     state: present

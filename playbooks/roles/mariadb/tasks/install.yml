@@ -34,3 +34,10 @@
     state: present
   with_items: "{{ mariadb_packages }}"
   tags: mariadb
+
+- name: Install MySQL-python pip package
+  pip:
+    name: "{{ item }}"
+    state: present
+  with_items: '{{ mariadb_pip_dependencies }}'
+  when: ansible_os_family == 'Debian'

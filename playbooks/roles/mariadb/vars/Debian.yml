@@ -12,6 +12,7 @@ mariadb_packages:
   - mariadb-server
   - mariadb-client
   - libmysqlclient-dev
+  - python-pip
 
 mariadb_pip_dependencies:
   - MySQL-python

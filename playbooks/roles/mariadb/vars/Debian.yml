@@ -11,6 +11,7 @@ mariadb_apt_keyid: '0xF1656F24C74CD1D8'
 mariadb_packages:
   - mariadb-server
   - mariadb-client
+  - MySQL-python
 
 mariadb_socket: /var/run/mysqld/mysqld.sock
 

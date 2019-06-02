@@ -9,9 +9,8 @@ mariadb_apt_keyserver: 'keyserver.ubuntu.com'
 mariadb_apt_keyid: '0xF1656F24C74CD1D8'
 
 mariadb_packages:
-  - MariaDB
-  - MariaDB-server
-  - MySQL-python
+  - mariadb-server
+  - mariadb-client
 
 mariadb_socket: /var/lib/mysql/mysql.sock
 

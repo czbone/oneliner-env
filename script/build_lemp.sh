@@ -14,6 +14,7 @@
 #                                   fix PHP session not seved problem
 #               1.2.0  (2018-12-12) update for PHP v7.3
 #               2.0.0  (2019-01-06) support Ubuntu18
+#               2.0.1  (2019-06-03) Ubuntu18 repository problem fixed
 # License:      MIT License
 
 # Define macro parameter
@@ -81,7 +82,11 @@ declare INSTALL_PACKAGE_CMD=""
 if [ $OS == 'CentOS' ]; then
     INSTALL_PACKAGE_CMD="yum -y install"
 elif [ $OS == 'Ubuntu' ]; then
-    INSTALL_PACKAGE_CMD="apt -y install"
+    INSTALL_PACKAGE_CMD="apt install"
+    
+    # Repository update for ansible
+    apt install software-properties-common
+    apt-add-repository --yes --update ppa:ansible/ansible
 fi
 
 $INSTALL_PACKAGE_CMD ansible

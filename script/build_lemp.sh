@@ -82,15 +82,17 @@ declare INSTALL_PACKAGE_CMD=""
 if [ $OS == 'CentOS' ]; then
     INSTALL_PACKAGE_CMD="yum -y install"
 elif [ $OS == 'Ubuntu' ]; then
-    INSTALL_PACKAGE_CMD="apt install"
+    if ! type -P ansible >/dev/null ; then
+        INSTALL_PACKAGE_CMD="apt install"
     
-    # Repository update for ansible
-    apt install software-properties-common
-    apt-add-repository --yes --update ppa:ansible/ansible
+        # Repository update for ansible
+        apt install software-properties-common
+        apt-add-repository --yes --update ppa:ansible/ansible
+    fi
 fi
 
 # Install ansible command if not exists
-if ! type -P ansible >/dev/null ; then
+if [ $INSTALL_PACKAGE_CMD != '' ]; then
     $INSTALL_PACKAGE_CMD ansible
 fi
 

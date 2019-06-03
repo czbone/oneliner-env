@@ -44,7 +44,7 @@ FFmpegはコーデックにAV1やh265等に対応しています。その他のFFmpegの設定は[こちら](
 ### バージョン
 - Nginx 1.17.0
 - PHP 7.3.6
-- MariaDB 5.5.60(CentOS),MySQL 5.7.24(Ubuntu)
+- MariaDB 10.3.15(CentOS,Ubuntu)
 - FFmpeg 4.1.3
 
 ```

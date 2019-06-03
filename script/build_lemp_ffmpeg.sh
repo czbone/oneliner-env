@@ -80,8 +80,7 @@ if [ $OS == 'CentOS' ]; then
     INSTALL_PACKAGE_CMD="yum -y install"
 elif [ $OS == 'Ubuntu' ]; then
     if ! type -P ansible >/dev/null ; then
-        #INSTALL_PACKAGE_CMD="apt install"
-        INSTALL_PACKAGE_CMD="apt --purge --yes install"
+        INSTALL_PACKAGE_CMD="apt -y install"
     
         # Repository update for ansible
         apt install software-properties-common

@@ -92,7 +92,7 @@ elif [ $OS == 'Ubuntu' ]; then
 fi
 
 # Install ansible command if not exists
-if [ $INSTALL_PACKAGE_CMD != '' ]; then
+if [ "$INSTALL_PACKAGE_CMD" != '' ]; then
     $INSTALL_PACKAGE_CMD ansible
 fi
 

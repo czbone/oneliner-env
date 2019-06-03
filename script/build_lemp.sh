@@ -89,7 +89,10 @@ elif [ $OS == 'Ubuntu' ]; then
     apt-add-repository --yes --update ppa:ansible/ansible
 fi
 
-$INSTALL_PACKAGE_CMD ansible
+# Install ansible command if not exists
+if ! type -P ansible >/dev/null ; then
+    $INSTALL_PACKAGE_CMD ansible
+fi
 
 # Download the latest repository archive
 if [ $TEST_MODE == 'true' ]; then

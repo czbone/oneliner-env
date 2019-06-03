@@ -93,7 +93,7 @@ fi
 
 # Install ansible command if not exists
 if [ "$INSTALL_PACKAGE_CMD" != '' ]; then
-    $INSTALL_PACKAGE_CMD ansible
+    $INSTALL_PACKAGE_CMD ansible || true
 fi
 
 # Download the latest repository archive

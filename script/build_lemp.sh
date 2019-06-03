@@ -83,7 +83,8 @@ if [ $OS == 'CentOS' ]; then
     INSTALL_PACKAGE_CMD="yum -y install"
 elif [ $OS == 'Ubuntu' ]; then
     if ! type -P ansible >/dev/null ; then
-        INSTALL_PACKAGE_CMD="apt install"
+        #INSTALL_PACKAGE_CMD="apt install"
+        INSTALL_PACKAGE_CMD="apt --purge --yes install"
     
         # Repository update for ansible
         apt install software-properties-common
@@ -93,7 +94,7 @@ fi
 
 # Install ansible command if not exists
 if [ "$INSTALL_PACKAGE_CMD" != '' ]; then
-    ( $INSTALL_PACKAGE_CMD ansible )
+    $INSTALL_PACKAGE_CMD ansible
 fi
 
 # Download the latest repository archive

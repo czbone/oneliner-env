@@ -26,4 +26,3 @@ character-set-server=utf8
 [mariadb]
 
 [mariadb-5.5]
-

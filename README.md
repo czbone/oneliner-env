@@ -30,7 +30,7 @@ Linux(L),Nginx(N),MariaDB(M),PHP(P)のLEMP環境を作成します。
 ### バージョン
 - Nginx 1.16.0(CentOS), Nginx 1.14.0(Ubuntu)
 - PHP 7.3
-- MariaDB 10.3.15(CentOS,Ubuntu)
+- MariaDB 10.3.15
 
 ```
 $ curl https://raw.githubusercontent.com/czbone/oneliner-env/master/script/build_lemp.sh | bash
@@ -44,7 +44,7 @@ FFmpegはコーデックにAV1やh265等に対応しています。その他のFFmpegの設定は[こちら](
 ### バージョン
 - Nginx 1.17.0
 - PHP 7.3.6
-- MariaDB 10.3.15(CentOS,Ubuntu)
+- MariaDB 10.3.15
 - FFmpeg 4.1.3
 
 ```
@@ -52,5 +52,5 @@ $ curl https://raw.githubusercontent.com/czbone/oneliner-env/master/script/build
 ```
 
 # 検証環境
-- Vagrant Box CentOS7「centos/7」, Ubuntu18「ubuntu/bionic64」
-- さくらVPS 「CentOS7」(標準OS), 「Ubuntu18.04 amd64」(カスタムOS)
+- **Vagrant Box** CentOS7「centos/7」, Ubuntu18「ubuntu/bionic64」
+- **さくらVPS** 「CentOS7」(標準OS), 「Ubuntu18.04 amd64」(カスタムOS)

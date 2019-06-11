@@ -51,6 +51,20 @@ FFmpegはコーデックにAV1やh265等に対応しています。その他のFFmpegの設定は[こちら](
 $ curl https://raw.githubusercontent.com/czbone/oneliner-env/master/script/build_lemp_ffmpeg.sh | bash
 ```
 
+# 動作チェック
+
+環境構築後、WebブラウザでURLにアクセスし、簡単に動作チェックを行います。「localhost」部分は環境に合わせて変更してください。
+
+phpinfoが表示されます。
+```
+http://localhost/index.php
+```
+
+テスト用DBに日本語文字列を登録し再表示させます。文字化けせずに日本語が表示されていればOKです。
+```
+http://localhost/index2.php
+```
+
 # 検証環境
 - **Vagrant Box** CentOS7「centos/7」, Ubuntu18「ubuntu/bionic64」
 - **さくらVPS** 「CentOS7」(標準OS), 「Ubuntu18.04 amd64」(カスタムOS)

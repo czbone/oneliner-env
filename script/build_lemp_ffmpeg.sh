@@ -81,7 +81,7 @@ if [ $OS == 'CentOS' ]; then
     
     # Repository update for latest ansible
     #yum -y install epel-release python-devel openssl-devel gcc
-    yum -y install epel-release openssl-devel
+    yum -y install epel-release
 elif [ $OS == 'Ubuntu' ]; then
     if ! type -P ansible >/dev/null ; then
         INSTALL_PACKAGE_CMD="apt -y install"

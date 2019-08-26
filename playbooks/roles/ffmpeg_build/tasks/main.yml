@@ -17,6 +17,7 @@
       - mercurial
       - pkgconfig
       - zlib-devel
+      - openssl-devel
   when: ansible_os_family == 'RedHat'
 - name: Install base library for Ubuntu by apt
   apt:

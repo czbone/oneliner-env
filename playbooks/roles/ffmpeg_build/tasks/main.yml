@@ -221,7 +221,7 @@
     dest: "{{ ffmpeg_src_dir }}/libvpx"
 - name: Compile libvpx
   shell: >-
-    ./configure --prefix="{{ ffmpeg_build_dir }}" &&
+    ./configure --prefix="{{ ffmpeg_build_dir }}" --disable-examples --disable-unit-tests --enable-vp9-highbitdepth --as=yasm &&
     make
     chdir="{{ ffmpeg_src_dir }}/libvpx"
   # compiling libvpx needs NASM command

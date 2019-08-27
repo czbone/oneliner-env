@@ -12,7 +12,7 @@
 #               1.0.0  (2018-12-07) initial version
 #               2.0.0  (2019-01-06) support Ubuntu18
 #               2.1.0  (2019-06-03) fix Ubuntu18 Ansible repository problem
-#               3.0.0  (2019-08-27) update FFmpeg v4.2
+#               3.0.0  (2019-08-27) update for FFmpeg v4.2
 # License:      MIT License
 
 # Define macro parameter
@@ -92,9 +92,6 @@ elif [ $OS == 'Ubuntu' ]; then
         apt-add-repository --yes --update ppa:ansible/ansible
         apt -y update
         apt -y upgrade
-        
-	#INSTALL_PACKAGE_CMD="pip3 install"
-        #apt -y install python3-pip
     fi
 fi
 

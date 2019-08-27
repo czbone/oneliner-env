@@ -90,6 +90,7 @@ elif [ $OS == 'Ubuntu' ]; then
 	apt -y install python-apt
         apt -y install software-properties-common
         apt-add-repository --yes --update ppa:ansible/ansible
+	apt update
     fi
 fi
 

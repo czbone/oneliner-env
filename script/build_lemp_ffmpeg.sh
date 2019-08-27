@@ -90,8 +90,8 @@ elif [ $OS == 'Ubuntu' ]; then
 	apt -y install python-apt
         apt -y install software-properties-common
         apt-add-repository --yes --update ppa:ansible/ansible
-        apt update
-        apt upgrade
+        apt -y update
+        apt -y upgrade
         
 	#INSTALL_PACKAGE_CMD="pip3 install"
         #apt -y install python3-pip

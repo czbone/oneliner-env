@@ -87,14 +87,14 @@ elif [ $OS == 'Ubuntu' ]; then
         #INSTALL_PACKAGE_CMD="apt -y install"
     
         # Repository update for ansible
-	#apt -y install python-apt
-        #apt -y install software-properties-common
-        #apt-add-repository --yes --update ppa:ansible/ansible
-        #apt update
-        #apt upgrade
+	apt -y install python-apt
+        apt -y install software-properties-common
+        apt-add-repository --yes --update ppa:ansible/ansible
+        apt update
+        apt upgrade
         
-	INSTALL_PACKAGE_CMD="pip3 install"
-        apt -y install python3-pip
+	#INSTALL_PACKAGE_CMD="pip3 install"
+        #apt -y install python3-pip
     fi
 fi
 

@@ -2,9 +2,9 @@
 # 
 # Script Name: build_lemp_ffmpeg.sh
 #
-# Version:      2.1.0
+# Version:      3.0.0
 # Author:       Naoki Hirata
-# Date:         2019-06-03
+# Date:         2019-08-27
 # Usage:        build_lemp_ffmpeg.sh [-test]
 # Options:      -test      test mode execution with the latest source package
 # Description:  This script builds LEMP(Linux Nginx, MariaDB, Linux) and FFmpeg environment with the one-liner command.
@@ -12,6 +12,7 @@
 #               1.0.0  (2018-12-07) initial version
 #               2.0.0  (2019-01-06) support Ubuntu18
 #               2.1.0  (2019-06-03) fix Ubuntu18 Ansible repository problem
+#               3.0.0  (2019-08-27) update FFmpeg v4.2
 # License:      MIT License
 
 # Define macro parameter
@@ -80,7 +81,6 @@ if [ $OS == 'CentOS' ]; then
     INSTALL_PACKAGE_CMD="yum -y install"
     
     # Repository update for latest ansible
-    #yum -y install epel-release python-devel openssl-devel gcc
     yum -y install epel-release
 elif [ $OS == 'Ubuntu' ]; then
     if ! type -P ansible >/dev/null ; then

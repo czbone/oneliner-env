@@ -28,9 +28,9 @@
 Linux(L),Nginx(N),MariaDB(M),PHP(P)のLEMP環境を作成します。
 
 ### バージョン
-- Nginx 1.16.0(CentOS), Nginx 1.14.0(Ubuntu)
+- Nginx 1.16.x(CentOS), Nginx 1.14.x(Ubuntu)
 - PHP 7.3
-- MariaDB 10.3.15
+- MariaDB 10.3.x
 
 ```
 $ curl https://raw.githubusercontent.com/czbone/oneliner-env/master/script/build_lemp.sh | bash

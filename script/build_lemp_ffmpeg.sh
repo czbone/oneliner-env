@@ -87,7 +87,7 @@ elif [ $OS == 'Ubuntu' ]; then
         INSTALL_PACKAGE_CMD="apt -y install"
     
         # Repository update for ansible
-	apt -y instll python-apt
+	apt -y install python-apt
         apt -y install software-properties-common
         apt-add-repository --yes --update ppa:ansible/ansible
     fi

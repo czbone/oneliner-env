@@ -84,7 +84,7 @@ if [ $OS == 'CentOS' ]; then
     yum -y install epel-release
 elif [ $OS == 'Ubuntu' ]; then
     if ! type -P ansible >/dev/null ; then
-        INSTALL_PACKAGE_CMD="apt -y -qq install"
+        INSTALL_PACKAGE_CMD="apt -y install"
     
         # Repository update for ansible
 	apt -y install python-apt

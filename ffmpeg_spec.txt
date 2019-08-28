@@ -1,15 +1,15 @@
 [root@localhost ~]# ffmpeg -codecs
-ffmpeg version 4.1.3 Copyright (c) 2000-2019 the FFmpeg developers
-  built with gcc 4.8.5 (GCC) 20150623 (Red Hat 4.8.5-36)
-  configuration: --prefix=/usr/local/src/ffmpeg-4.1.3/ffmpeg_build --extra-cflags=-I/usr/local/src/ffmpeg-4.1.3/ffmpeg_build/include --extra-ldflags=-L/usr/local/src/ffmpeg-4.1.3/ffmpeg_build/lib --extra-libs='-lpthread -lm' --bindir=/usr/local/bin --pkg-config-flags=--static --enable-gpl --enable-nonfree --enable-libfdk-aac --enable-libfreetype --enable-libmp3lame --enable-libopus --enable-libvorbis --enable-libvpx --enable-libx264 --enable-libx265 --enable-libaom
-  libavutil      56. 22.100 / 56. 22.100
-  libavcodec     58. 35.100 / 58. 35.100
-  libavformat    58. 20.100 / 58. 20.100
-  libavdevice    58.  5.100 / 58.  5.100
-  libavfilter     7. 40.101 /  7. 40.101
-  libswscale      5.  3.100 /  5.  3.100
-  libswresample   3.  3.100 /  3.  3.100
-  libpostproc    55.  3.100 / 55.  3.100
+ffmpeg version 4.2 Copyright (c) 2000-2019 the FFmpeg developers
+  built with gcc 7 (Ubuntu 7.4.0-1ubuntu1~18.04.1)
+  configuration: --prefix=/usr/local/src/ffmpeg-4.2/ffmpeg_build --extra-cflags=-I/usr/local/src/ffmpeg-4.2/ffmpeg_build/include --extra-ldflags=-L/usr/local/src/ffmpeg-4.2/ffmpeg_build/lib --extra-libs='-lpthread -lm' --bindir=/usr/local/bin --pkg-config-flags=--static --enable-gpl --enable-nonfree --enable-libfdk-aac --enable-libfreetype --enable-libmp3lame --enable-libopus --enable-libvorbis --enable-libvpx --enable-libx264 --enable-libx265 --enable-libaom
+  libavutil      56. 31.100 / 56. 31.100
+  libavcodec     58. 54.100 / 58. 54.100
+  libavformat    58. 29.100 / 58. 29.100
+  libavdevice    58.  8.100 / 58.  8.100
+  libavfilter     7. 57.100 /  7. 57.100
+  libswscale      5.  5.100 /  5.  5.100
+  libswresample   3.  5.100 /  3.  5.100
+  libpostproc    55.  5.100 / 55.  5.100
 Codecs:
  D..... = Decoding supported
  .E.... = Encoding supported
@@ -26,12 +26,14 @@ Codecs:
  .EVIL. a64_multi            Multicolor charset for Commodore 64 (encoders: a64multi )
  .EVIL. a64_multi5           Multicolor charset for Commodore 64, extended with 5th color (colram) (encoders: a64multi5 )
  D.V..S aasc                 Autodesk RLE
+ D.V.L. agm                  Amuse Graphics Movie
  D.VIL. aic                  Apple Intermediate Codec
  DEVI.S alias_pix            Alias/Wavefront PIX image
  DEVIL. amv                  AMV Video
  D.V.L. anm                  Deluxe Paint Animation
  D.V.L. ansi                 ASCII/ANSI art
  DEV..S apng                 APNG (Animated Portable Network Graphics) image
+ D.V.L. arbc                 Gryphon's Anim Compressor
  DEVIL. asv1                 ASUS V1
  DEVIL. asv2                 ASUS V2
  D.VIL. aura                 Auravision AURA
@@ -91,18 +93,19 @@ Codecs:
  D.VI.S frwu                 Forward Uncompressed
  D.V.L. g2m                  Go2Meeting
  D.V.L. gdv                  Gremlin Digital Video
- DEV..S gif                  GIF (Graphics Interchange Format)
+ DEV..S gif                  CompuServe GIF (Graphics Interchange Format)
  DEV.L. h261                 H.261
- DEV.L. h263                 H.263 / H.263-1996, H.263+ / H.263-1998 / H.263 version 2
+ DEV.L. h263                 H.263 / H.263-1996, H.263+ / H.263-1998 / H.263 version 2 (decoders: h263 h263_v4l2m2m ) (encoders: h263 h263_v4l2m2m )
  D.V.L. h263i                Intel H.263
  DEV.L. h263p                H.263+ / H.263-1998 / H.263 version 2
- DEV.LS h264                 H.264 / AVC / MPEG-4 AVC / MPEG-4 part 10 (encoders: libx264 libx264rgb )
+ DEV.LS h264                 H.264 / AVC / MPEG-4 AVC / MPEG-4 part 10 (decoders: h264 h264_v4l2m2m ) (encoders: libx264 libx264rgb h264_v4l2m2m )
  D.VIL. hap                  Vidvox Hap
  DEV.L. hevc                 H.265 / HEVC (High Efficiency Video Coding) (encoders: libx265 )
  D.V.L. hnm4video            HNM 4 video
  D.VIL. hq_hqa               Canopus HQ/HQA
  D.VIL. hqx                  Canopus HQX
  DEVI.S huffyuv              HuffYUV
+ D.VI.S hymt                 HuffYUV MT
  D.V.L. idcin                id Quake II CIN video (decoders: idcinvideo )
  D.VI.. idf                  iCEDraw text
  D.V.L. iff_ilbm             IFF ACBM/ANIM/DEEP/ILBM/PBM/RGB8/RGBN (decoders: iff )
@@ -120,6 +123,7 @@ Codecs:
  D.VI.S lagarith             Lagarith lossless
  .EVI.S ljpeg                Lossless JPEG
  D.VI.S loco                 LOCO
+ D.V.L. lscr                 LEAD Screen Capture
  D.VI.S m101                 Matrox Uncompressed SD
  D.V.L. mad                  Electronic Arts Madcow Video (decoders: eamad )
  DEVI.S magicyuv             MagicYUV video
@@ -129,9 +133,9 @@ Codecs:
  D.VIL. mjpegb               Apple MJPEG-B
  D.V.L. mmvideo              American Laser Games MM Video
  D.V.L. motionpixels         Motion Pixels video
- DEV.L. mpeg1video           MPEG-1 video
- DEV.L. mpeg2video           MPEG-2 video (decoders: mpeg2video mpegvideo )
- DEV.L. mpeg4                MPEG-4 part 2
+ DEV.L. mpeg1video           MPEG-1 video (decoders: mpeg1video mpeg1_v4l2m2m )
+ DEV.L. mpeg2video           MPEG-2 video (decoders: mpeg2video mpegvideo mpeg2_v4l2m2m )
+ DEV.L. mpeg4                MPEG-4 part 2 (decoders: mpeg4 mpeg4_v4l2m2m ) (encoders: mpeg4 mpeg4_v4l2m2m )
  D.V.L. msa1                 MS ATC Screen
  D.VI.S mscc                 Mandsoft Screen Capture Codec
  D.V.L. msmpeg4v1            MPEG-4 part 2 Microsoft variant version 1
@@ -220,20 +224,21 @@ Codecs:
  DEVI.S v410                 Uncompressed 4:4:4 10-bit
  D.V.L. vb                   Beam Software VB
  D.VI.S vble                 VBLE Lossless Codec
- D.V.L. vc1                  SMPTE VC-1
+ D.V.L. vc1                  SMPTE VC-1 (decoders: vc1 vc1_v4l2m2m )
  D.V.L. vc1image             Windows Media Video 9 Image v2
  D.VIL. vcr1                 ATI VCR1
  D.VIL. vixl                 Miro VideoXL (decoders: xl )
  D.V.L. vmdvideo             Sierra VMD video
  D.V..S vmnc                 VMware Screen Codec / VMware Video
  D.V.L. vp3                  On2 VP3
+ D.V.L. vp4                  On2 VP4
  D.V.L. vp5                  On2 VP5
  D.V.L. vp6                  On2 VP6
  D.V.L. vp6a                 On2 VP6 (Flash version, with alpha channel)
  D.V.L. vp6f                 On2 VP6 (Flash version)
  D.V.L. vp7                  On2 VP7
- DEV.L. vp8                  On2 VP8 (decoders: vp8 libvpx ) (encoders: libvpx )
- DEV.L. vp9                  Google VP9 (decoders: vp9 libvpx-vp9 ) (encoders: libvpx-vp9 )
+ DEV.L. vp8                  On2 VP8 (decoders: vp8 vp8_v4l2m2m libvpx ) (encoders: libvpx vp8_v4l2m2m )
+ DEV.L. vp9                  Google VP9 (decoders: vp9 vp9_v4l2m2m libvpx-vp9 ) (encoders: libvpx-vp9 )
  D.V..S wcmv                 WinCAM Motion Video
  D.VILS webp                 WebP
  DEV.L. wmv1                 Windows Media Video 7
@@ -266,6 +271,7 @@ Codecs:
  D.A.L. adpcm_4xm            ADPCM 4X Movie
  DEA.L. adpcm_adx            SEGA CRI ADX ADPCM
  D.A.L. adpcm_afc            ADPCM Nintendo Gamecube AFC
+ D.A.L. adpcm_agm            ADPCM AmuseGraphics Movie AGM
  D.A.L. adpcm_aica           ADPCM Yamaha AICA
  D.A.L. adpcm_ct             ADPCM Creative Technology
  D.A.L. adpcm_dtk            ADPCM Nintendo Gamecube DTK
@@ -342,6 +348,7 @@ Codecs:
  D.A.L. gremlin_dpcm         DPCM Gremlin
  D.A.L. gsm                  GSM
  D.A.L. gsm_ms               GSM Microsoft variant
+ D.A.L. hcom                 HCOM Audio
  D.A.L. iac                  IAC (Indeo Audio Coder)
  D.A.L. ilbc                 iLBC (Internet Low Bitrate Codec)
  D.A.L. imc                  IMC (Intel Music Coder)
@@ -364,7 +371,7 @@ Codecs:
  D.A.L. paf_audio            Amazing Studio Packed Animation File Audio
  DEA.L. pcm_alaw             PCM A-law / G.711 A-law
  D.A..S pcm_bluray           PCM signed 16|20|24-bit big-endian for Blu-ray media
- D.A..S pcm_dvd              PCM signed 20|24-bit big-endian
+ DEA..S pcm_dvd              PCM signed 20|24-bit big-endian
  D.A..S pcm_f16le            PCM 16.8 floating point little-endian
  D.A..S pcm_f24le            PCM 24.0 floating point little-endian
  DEA..S pcm_f32be            PCM 32-bit floating point big-endian
@@ -440,6 +447,7 @@ Codecs:
  ..D... scte_35              SCTE 35 Message Queue
  ..D... timed_id3            timed ID3 metadata
  ..D... ttf                  TrueType font
+ ..S... arib_caption         ARIB STD-B24 caption
  DES... ass                  ASS (Advanced SSA) subtitle (decoders: ssa ass ) (encoders: ssa ass )
  DES... dvb_subtitle         DVB subtitles (decoders: dvbsub ) (encoders: dvbsub )
  ..S... dvb_teletext         DVB teletext

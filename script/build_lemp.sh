@@ -81,12 +81,17 @@ fi
 declare INSTALL_PACKAGE_CMD=""
 if [ $OS == 'CentOS' ]; then
     INSTALL_PACKAGE_CMD="yum -y install"
+    
+    # Repository update for latest ansible
+    yum -y install epel-release
 elif [ $OS == 'Ubuntu' ]; then
     if ! type -P ansible >/dev/null ; then
         INSTALL_PACKAGE_CMD="apt -y install"
     
         # Repository update for ansible
-        apt install software-properties-common
+        apt -y update
+        apt -y upgrade
+        apt -y install software-properties-common
         apt-add-repository --yes --update ppa:ansible/ansible
     fi
 fi

@@ -60,7 +60,7 @@
 #      when: ansible_os_family == 'RedHat'
   
     # fix directory ownership for Nginx
-    - file: path=/var/log/nginx owner=root group=root mode=0700
+    - file: path=/var/log/nginx owner=root group=root mode=0755
       when: ansible_os_family == 'RedHat'
     - file: path=/var/log/php-fpm owner=root group=root mode=0700
       when: ansible_os_family == 'RedHat'

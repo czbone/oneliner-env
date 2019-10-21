@@ -259,7 +259,7 @@
     remote_src: yes
 - name: Compile FFmpeg
   shell: >-
-    ./configure --prefix="{{ ffmpeg_build_dir }}" --extra-cflags="-I{{ ffmpeg_build_dir }}/include" --extra-ldflags="-L{{ ffmpeg_build_dir }}/lib -L{{ ffmpeg_build_dir }}/lib64" --extra-libs="-lpthread -lm" --bindir="{{ tool_bin_dir }}" --pkg-config-flags="--static" --enable-gpl --enable-nonfree --enable-libfdk-aac --enable-libfreetype --enable-libmp3lame --enable-libopus --enable-libvorbis --enable-libvpx --enable-libx264 --enable-libx265 --enable-libaom --enable-shared &&
+    ./configure --prefix="{{ ffmpeg_build_dir }}" --extra-cflags="-I{{ ffmpeg_build_dir }}/include" --extra-ldflags="-L{{ ffmpeg_build_dir }}/lib -L{{ ffmpeg_build_dir }}/lib64" --extra-libs="-lpthread -lm" --bindir="{{ tool_bin_dir }}" --pkg-config-flags="--static" --enable-gpl --enable-nonfree --enable-libfdk-aac --enable-libfreetype --enable-libmp3lame --enable-libopus --enable-libvorbis --enable-libvpx --enable-libx264 --enable-libx265 --enable-libaom &&
     make
     chdir="{{ ffmpeg_src_dir }}/ffmpeg-{{ ffmpeg_version }}"
   # compiling FFmpeg needs NASM command

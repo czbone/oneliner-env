@@ -243,7 +243,7 @@
     - "{{ ffmpeg_src_dir }}/aom/build"
 - name: Compile libaom
   shell: >-
-    cmake -G "Unix Makefiles" -DCMAKE_INSTALL_PREFIX="{{ ffmpeg_build_dir }}" -DBUILD_SHARED_LIBS=1 ../ &&
+    cmake -G "Unix Makefiles" -DCMAKE_INSTALL_PREFIX="{{ ffmpeg_build_dir }}" ../ &&
     make
     chdir="{{ ffmpeg_src_dir }}/aom/build"
 - name: Install libaom

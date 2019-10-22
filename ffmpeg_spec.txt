@@ -1,7 +1,7 @@
 [root@localhost ~]# ffmpeg -codecs
-ffmpeg version 4.2 Copyright (c) 2000-2019 the FFmpeg developers
-  built with gcc 7 (Ubuntu 7.4.0-1ubuntu1~18.04.1)
-  configuration: --prefix=/usr/local/src/ffmpeg-4.2/ffmpeg_build --extra-cflags=-I/usr/local/src/ffmpeg-4.2/ffmpeg_build/include --extra-ldflags=-L/usr/local/src/ffmpeg-4.2/ffmpeg_build/lib --extra-libs='-lpthread -lm' --bindir=/usr/local/bin --pkg-config-flags=--static --enable-gpl --enable-nonfree --enable-libfdk-aac --enable-libfreetype --enable-libmp3lame --enable-libopus --enable-libvorbis --enable-libvpx --enable-libx264 --enable-libx265 --enable-libaom
+ffmpeg version 4.2.1 Copyright (c) 2000-2019 the FFmpeg developers
+  built with gcc 4.8.5 (GCC) 20150623 (Red Hat 4.8.5-39)
+  configuration: --prefix=/usr/local/src/ffmpeg-4.2.1/ffmpeg_build --extra-cflags=-I/usr/local/src/ffmpeg-4.2.1/ffmpeg_build/include --extra-ldflags='-L/usr/local/src/ffmpeg-4.2.1/ffmpeg_build/lib -L/usr/local/src/ffmpeg-4.2.1/ffmpeg_build/lib64' --extra-libs='-lpthread -lm' --bindir=/usr/local/bin --pkg-config-flags=--static --enable-gpl --enable-nonfree --enable-libfdk-aac --enable-libfreetype --enable-libmp3lame --enable-libopus --enable-libvorbis --enable-libvpx --enable-libx264 --enable-libx265 --enable-libaom
   libavutil      56. 31.100 / 56. 31.100
   libavcodec     58. 54.100 / 58. 54.100
   libavformat    58. 29.100 / 58. 29.100
@@ -95,10 +95,10 @@ Codecs:
  D.V.L. gdv                  Gremlin Digital Video
  DEV..S gif                  CompuServe GIF (Graphics Interchange Format)
  DEV.L. h261                 H.261
- DEV.L. h263                 H.263 / H.263-1996, H.263+ / H.263-1998 / H.263 version 2 (decoders: h263 h263_v4l2m2m ) (encoders: h263 h263_v4l2m2m )
+ DEV.L. h263                 H.263 / H.263-1996, H.263+ / H.263-1998 / H.263 version 2
  D.V.L. h263i                Intel H.263
  DEV.L. h263p                H.263+ / H.263-1998 / H.263 version 2
- DEV.LS h264                 H.264 / AVC / MPEG-4 AVC / MPEG-4 part 10 (decoders: h264 h264_v4l2m2m ) (encoders: libx264 libx264rgb h264_v4l2m2m )
+ DEV.LS h264                 H.264 / AVC / MPEG-4 AVC / MPEG-4 part 10 (encoders: libx264 libx264rgb )
  D.VIL. hap                  Vidvox Hap
  DEV.L. hevc                 H.265 / HEVC (High Efficiency Video Coding) (encoders: libx265 )
  D.V.L. hnm4video            HNM 4 video
@@ -133,9 +133,9 @@ Codecs:
  D.VIL. mjpegb               Apple MJPEG-B
  D.V.L. mmvideo              American Laser Games MM Video
  D.V.L. motionpixels         Motion Pixels video
- DEV.L. mpeg1video           MPEG-1 video (decoders: mpeg1video mpeg1_v4l2m2m )
- DEV.L. mpeg2video           MPEG-2 video (decoders: mpeg2video mpegvideo mpeg2_v4l2m2m )
- DEV.L. mpeg4                MPEG-4 part 2 (decoders: mpeg4 mpeg4_v4l2m2m ) (encoders: mpeg4 mpeg4_v4l2m2m )
+ DEV.L. mpeg1video           MPEG-1 video
+ DEV.L. mpeg2video           MPEG-2 video (decoders: mpeg2video mpegvideo )
+ DEV.L. mpeg4                MPEG-4 part 2
  D.V.L. msa1                 MS ATC Screen
  D.VI.S mscc                 Mandsoft Screen Capture Codec
  D.V.L. msmpeg4v1            MPEG-4 part 2 Microsoft variant version 1
@@ -224,7 +224,7 @@ Codecs:
  DEVI.S v410                 Uncompressed 4:4:4 10-bit
  D.V.L. vb                   Beam Software VB
  D.VI.S vble                 VBLE Lossless Codec
- D.V.L. vc1                  SMPTE VC-1 (decoders: vc1 vc1_v4l2m2m )
+ D.V.L. vc1                  SMPTE VC-1
  D.V.L. vc1image             Windows Media Video 9 Image v2
  D.VIL. vcr1                 ATI VCR1
  D.VIL. vixl                 Miro VideoXL (decoders: xl )
@@ -237,8 +237,8 @@ Codecs:
  D.V.L. vp6a                 On2 VP6 (Flash version, with alpha channel)
  D.V.L. vp6f                 On2 VP6 (Flash version)
  D.V.L. vp7                  On2 VP7
- DEV.L. vp8                  On2 VP8 (decoders: vp8 vp8_v4l2m2m libvpx ) (encoders: libvpx vp8_v4l2m2m )
- DEV.L. vp9                  Google VP9 (decoders: vp9 vp9_v4l2m2m libvpx-vp9 ) (encoders: libvpx-vp9 )
+ DEV.L. vp8                  On2 VP8 (decoders: vp8 libvpx ) (encoders: libvpx )
+ DEV.L. vp9                  Google VP9 (decoders: vp9 libvpx-vp9 ) (encoders: libvpx-vp9 )
  D.V..S wcmv                 WinCAM Motion Video
  D.VILS webp                 WebP
  DEV.L. wmv1                 Windows Media Video 7

@@ -45,7 +45,7 @@ FFmpegはコーデックにAV1やh265等に対応しています。その他のFFmpegの設定は[こちら](
 - Nginx 1.17.4
 - PHP 7.3.10
 - MariaDB 10.4.8
-- FFmpeg 4.2
+- FFmpeg 4.2.1
 
 ```
 $ curl https://raw.githubusercontent.com/czbone/oneliner-env/master/script/build_lemp_ffmpeg.sh | bash

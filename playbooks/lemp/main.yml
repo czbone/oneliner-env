@@ -75,8 +75,8 @@
 #      when: ansible_os_family == 'RedHat'
     - file: path="/var/lib/php/session" owner=nginx group=nginx mode=0770
       when: ansible_os_family == 'RedHat'
-    - file: path="/var/lib/php/wsdlcache" owner=nginx group=nginx mode=0770
-      when: ansible_os_family == 'RedHat'
+#    - file: path="/var/lib/php/wsdlcache" owner=nginx group=nginx mode=0770
+#      when: ansible_os_family == 'RedHat'
     
     # modify nginx config file
     # fix PHP_SELF value problem

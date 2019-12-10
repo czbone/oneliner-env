@@ -1,7 +1,7 @@
 ---
-- geerlingguy.repo-remi
 - geerlingguy.ntp
 - geerlingguy.nginx
+- geerlingguy.repo-remi
 - geerlingguy.php-versions
 - geerlingguy.php
 - geerlingguy.php-mysql

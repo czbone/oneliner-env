@@ -7,8 +7,8 @@
     
   vars:
     ### PHP version ###
-    php_version: '7.3'
-    php_default_version_debian: "7.3"
+    php_version: '7.4'
+    php_default_version_debian: "7.4"
 
     ### MariaDB version ###
     mariadb_version: '10.4'
@@ -24,10 +24,10 @@
         host: "127.0.0.1"
     
   roles:
-    - role: geerlingguy.repo-remi
-      when: ansible_os_family == 'RedHat'
     - geerlingguy.ntp
     - geerlingguy.nginx
+    - role: geerlingguy.repo-remi
+      when: ansible_os_family == 'RedHat'
     - geerlingguy.php-versions
     - geerlingguy.php
     - geerlingguy.php-mysql

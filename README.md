@@ -68,3 +68,7 @@ http://localhost/index2.php
 # 検証環境
 - **Vagrant Box** CentOS7「centos/7」, Ubuntu18「ubuntu/bionic64」
 - **さくらVPS** 「CentOS7」(標準OS), 「Ubuntu18.04 amd64」(カスタムOS)
+
+# 次期バージョン
+次期バージョンはこちらで開発しています。
+https://github.com/czbone/oneliner-env-centos8

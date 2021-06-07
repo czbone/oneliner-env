@@ -28,7 +28,7 @@
 Linux(L),Nginx(N),MariaDB(M),PHP(P)のLEMP環境を作成します。
 
 ### バージョン
-- Nginx 1.18.x(CentOS), Nginx 1.14.x(Ubuntu)
+- Nginx 1.20.x(CentOS), Nginx 1.14.x(Ubuntu)
 - PHP 7.4.x
 - MariaDB 10.4.x
 

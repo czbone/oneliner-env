@@ -6,3 +6,6 @@
 - geerlingguy.php
 - geerlingguy.php-mysql
 - geerlingguy.firewall
+- src: https://github.com/czbone/ansible-role-mariadb
+  name: mariadb
+

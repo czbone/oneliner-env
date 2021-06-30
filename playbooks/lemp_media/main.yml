@@ -11,7 +11,7 @@
     php_default_version_debian: "7.3"
 
     ### MariaDB version ###
-    mariadb_version: '10.4'
+    mariadb_version: '10.5'
     
     # sample database for Japanese testing
     mariadb_databases:
@@ -52,11 +52,11 @@
       when: ansible_os_family == 'Debian'
 
     # fix mariadb config file
-    - name: Install server config file
-      template:
-        src: etc_my.cnf.d_server.cnf.j2
-        dest: "{{ mariadb_config_server }}"
-      notify: restart mariadb
+    # - name: Install server config file
+    #   template:
+    #     src: etc_my.cnf.d_server.cnf.j2
+    #     dest: "{{ mariadb_config_server }}"
+    #   notify: restart mariadb
 #      when: ansible_os_family == 'RedHat'
   
     # fix directory ownership for Nginx

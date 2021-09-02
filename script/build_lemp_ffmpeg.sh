@@ -13,6 +13,7 @@
 #               2.0.0  (2019-01-06) support Ubuntu18
 #               2.1.0  (2019-06-03) fix Ubuntu18 Ansible repository problem
 #               3.0.0  (2019-08-27) update for FFmpeg v4.2
+#               3.1.0  (2021-09-02) add Git
 # License:      MIT License
 
 # Define macro parameter
@@ -97,6 +98,7 @@ fi
 # Install ansible command if not exists
 if [ "$INSTALL_PACKAGE_CMD" != '' ]; then
     $INSTALL_PACKAGE_CMD ansible
+    $INSTALL_PACKAGE_CMD git
 fi
 
 # Download the latest repository archive

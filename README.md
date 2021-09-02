@@ -1,33 +1,33 @@
-# 1s‚ÅŠÂ‹«\’z
-ƒT[ƒo‚É`root`ƒƒOƒCƒ“‚µ‚Ps‚ÌƒRƒ}ƒ“ƒh‚ðŽÀs‚·‚é‚¾‚¯‚ÅŠÂ‹«\’z‚Å‚«‚éƒXƒNƒŠƒvƒg‚Å‚·B  
-•K—v‚Èƒ\ƒtƒgƒEƒFƒA‚ª‚·‚×‚Ä”[‚Ü‚èA˜AŒg“®ì‚àŽæ‚ê‚Ä‚¢‚é1‘ä‚ÌƒT[ƒoŠÂ‹«‚ðì‚è‚Ü‚·B  
-ŠÂ‹«\’z‚Í“ï‚µ‚¢A‚½‚¢‚Ö‚ñŽžŠÔ‚ª‚©‚©‚é‚Æ‚¢‚¤–â‘è‚ð‘¦À‚É‰ðŒˆ‚µ‚Ü‚·B
+# 1è¡Œã§ç’°å¢ƒæ§‹ç¯‰
+ã‚µãƒ¼ãƒã«`root`ãƒ­ã‚°ã‚¤ãƒ³ã—ï¼‘è¡Œã®ã‚³ãƒžãƒ³ãƒ‰ã‚’å®Ÿè¡Œã™ã‚‹ã ã‘ã§ç’°å¢ƒæ§‹ç¯‰ã§ãã‚‹ã‚¹ã‚¯ãƒªãƒ—ãƒˆã§ã™ã€‚  
+å¿…è¦ãªã‚½ãƒ•ãƒˆã‚¦ã‚§ã‚¢ãŒã™ã¹ã¦ç´ã¾ã‚Šã€é€£æºå‹•ä½œã‚‚å–ã‚Œã¦ã„ã‚‹1å°ã®ã‚µãƒ¼ãƒç’°å¢ƒã‚’ä½œã‚Šã¾ã™ã€‚  
+ç’°å¢ƒæ§‹ç¯‰ã¯é›£ã—ã„ã€ãŸã„ã¸ã‚“æ™‚é–“ãŒã‹ã‹ã‚‹ã¨ã„ã†å•é¡Œã‚’å³åº§ã«è§£æ±ºã—ã¾ã™ã€‚
 
-‚±‚ÌƒvƒƒWƒFƒNƒg‚ÍA³Šm‚É“®ì‚·‚é‚²‚­•W€“I‚ÈŠÂ‹«‚ð\’z‚·‚é‚Ì‚ð–Ú“I‚Æ‚µ‚Ä‚¢‚Ü‚·B
-‚»‚êˆÈã‚ÌŠÂ‹«‚ª•K—v‚Èê‡‚ÍAo—ˆ‚½ŠÂ‹«‚©‚ç‚³‚ç‚É“ÆŽ©‚ÌƒJƒXƒ^ƒ}ƒCƒY‚ðs‚¤‚Ì‚ªƒxƒ^[‚Å‚·B
+ã“ã®ãƒ—ãƒ­ã‚¸ã‚§ã‚¯ãƒˆã¯ã€æ­£ç¢ºã«å‹•ä½œã™ã‚‹ã”ãæ¨™æº–çš„ãªç’°å¢ƒã‚’æ§‹ç¯‰ã™ã‚‹ã®ã‚’ç›®çš„ã¨ã—ã¦ã„ã¾ã™ã€‚
+ãã‚Œä»¥ä¸Šã®ç’°å¢ƒãŒå¿…è¦ãªå ´åˆã¯ã€å‡ºæ¥ãŸç’°å¢ƒã‹ã‚‰ã•ã‚‰ã«ç‹¬è‡ªã®ã‚«ã‚¹ã‚¿ãƒžã‚¤ã‚ºã‚’è¡Œã†ã®ãŒãƒ™ã‚¿ãƒ¼ã§ã™ã€‚
 
-## ‘ÎÛOS
-- CentOS 7, Ubuntu18
+## å¯¾è±¡OS
+- CentOS 8, CentOS 7, Ubuntu18
 
-## ƒ‰ƒCƒZƒ“ƒX
+## ãƒ©ã‚¤ã‚»ãƒ³ã‚¹
 
 [![MIT license](https://img.shields.io/badge/License-MIT-blue.svg)](https://lbesson.mit-license.org/)
 
-# ŽÀs“à—e
-ƒ[ƒJƒ‹‚ÉAnsible‚ðƒCƒ“ƒXƒg[ƒ‹‚µAAnsible Galaxy‚ÌPlaybook‚ðŠî–{‚É­‚µƒJƒXƒ^ƒ}ƒCƒY‚µ‚ÄŠÂ‹«\’z‚µ‚Ä‚¢‚Ü‚·B
-ŽŸ‚Ì“ÁF‚ª‚ ‚è‚Ü‚·B
+# å®Ÿè¡Œå†…å®¹
+ãƒ­ãƒ¼ã‚«ãƒ«ã«Ansibleã‚’ã‚¤ãƒ³ã‚¹ãƒˆãƒ¼ãƒ«ã—ã€Ansible Galaxyã®Playbookã‚’åŸºæœ¬ã«å°‘ã—ã‚«ã‚¹ã‚¿ãƒžã‚¤ã‚ºã—ã¦ç’°å¢ƒæ§‹ç¯‰ã—ã¦ã„ã¾ã™ã€‚
+æ¬¡ã®ç‰¹è‰²ãŒã‚ã‚Šã¾ã™ã€‚
 
-- ÅV‚Ìƒ\ƒtƒgƒEƒFƒAŠÂ‹«
-- “ú–{ŒêÅ“K‰»
+- æœ€æ–°ã®ã‚½ãƒ•ãƒˆã‚¦ã‚§ã‚¢ç’°å¢ƒ
+- æ—¥æœ¬èªžæœ€é©åŒ–
 
-# Žg‚¢•û
-V‹K‚ÉOS‚ðƒCƒ“ƒXƒg[ƒ‹‚µ‚½ƒT[ƒo‚É`root`‚ÅƒƒOƒCƒ“‚µA\’z‚µ‚½‚¢ŠÂ‹«‚ÌƒXƒNƒŠƒvƒg‚ðŽÀs‚µ‚Ü‚·B
-Š®—¹Œã‚Íˆê’UƒT[ƒo‚ðÄ‹N“®‚µ‚Ä‚­‚¾‚³‚¢B
+# ä½¿ã„æ–¹
+æ–°è¦ã«OSã‚’ã‚¤ãƒ³ã‚¹ãƒˆãƒ¼ãƒ«ã—ãŸã‚µãƒ¼ãƒã«`root`ã§ãƒ­ã‚°ã‚¤ãƒ³ã—ã€æ§‹ç¯‰ã—ãŸã„ç’°å¢ƒã®ã‚¹ã‚¯ãƒªãƒ—ãƒˆã‚’å®Ÿè¡Œã—ã¾ã™ã€‚
+å®Œäº†å¾Œã¯ä¸€æ—¦ã‚µãƒ¼ãƒã‚’å†èµ·å‹•ã—ã¦ãã ã•ã„ã€‚
 
-## WebƒT[ƒo(LEMP)ŠÂ‹«\’z (Š—vŽžŠÔ: –ñ10•ª)
-Linux(L),Nginx(N),MariaDB(M),PHP(P)‚ÌLEMPŠÂ‹«‚ðì¬‚µ‚Ü‚·B
+## Webã‚µãƒ¼ãƒ(LEMP)ç’°å¢ƒæ§‹ç¯‰ (æ‰€è¦æ™‚é–“: ç´„10åˆ†)
+Linux(L),Nginx(N),MariaDB(M),PHP(P)ã®LEMPç’°å¢ƒã‚’ä½œæˆã—ã¾ã™ã€‚
 
-### ƒo[ƒWƒ‡ƒ“
+### ãƒãƒ¼ã‚¸ãƒ§ãƒ³
 - Nginx 1.20.x(CentOS), Nginx 1.14.x(Ubuntu)
 - PHP 7.4.x
 - MariaDB 10.5.x
@@ -35,13 +35,13 @@ Linux(L),Nginx(N),MariaDB(M),PHP(P)‚ÌLEMPŠÂ‹«‚ðì¬‚µ‚Ü‚·B
 ```
 $ curl https://raw.githubusercontent.com/czbone/oneliner-env/master/script/build_lemp.sh | bash
 ```
-## “®‰æ”zMƒT[ƒo(LEMP+FFmpeg)ŠÂ‹«\’z (Š—vŽžŠÔ: –ñ1ŽžŠÔ)
-LEMPŠÂ‹«ì¬ŒãA•K—v‚Èƒ‰ƒCƒuƒ‰ƒŠ‚ðW‚ß‚ÄÅV‚ÌFFmpeg‚Ìƒrƒ‹ƒhˆ—‚ðs‚¢‚Ü‚·BFFmpeg‚Ìƒrƒ‹ƒh‚É‚ÍŽžŠÔ‚ª‚©‚©‚è‚Ü‚·B
+## å‹•ç”»é…ä¿¡ã‚µãƒ¼ãƒ(LEMP+FFmpeg)ç’°å¢ƒæ§‹ç¯‰ (æ‰€è¦æ™‚é–“: ç´„1æ™‚é–“)
+LEMPç’°å¢ƒä½œæˆå¾Œã€å¿…è¦ãªãƒ©ã‚¤ãƒ–ãƒ©ãƒªã‚’é›†ã‚ã¦æœ€æ–°ã®FFmpegã®ãƒ“ãƒ«ãƒ‰å‡¦ç†ã‚’è¡Œã„ã¾ã™ã€‚FFmpegã®ãƒ“ãƒ«ãƒ‰ã«ã¯æ™‚é–“ãŒã‹ã‹ã‚Šã¾ã™ã€‚
 
-Nginx‚ÍÅVƒ\[ƒX‚ÉRTMPƒ‚ƒWƒ…[ƒ‹‚ð’Ç‰Á‚µ‚Äƒrƒ‹ƒh‚µ‚Ä‚¢‚Ü‚·B
-FFmpeg‚ÍƒR[ƒfƒbƒN‚ÉAV1‚âh265“™‚É‘Î‰ž‚µ‚Ä‚¢‚Ü‚·B‚»‚Ì‘¼‚ÌFFmpeg‚ÌÝ’è‚Í[‚±‚¿‚ç](https://github.com/czbone/oneliner-env/blob/master/ffmpeg_spec.txt )‚ðŽQÆ‚µ‚Ä‚­‚¾‚³‚¢B
+Nginxã¯æœ€æ–°ã‚½ãƒ¼ã‚¹ã«RTMPãƒ¢ã‚¸ãƒ¥ãƒ¼ãƒ«ã‚’è¿½åŠ ã—ã¦ãƒ“ãƒ«ãƒ‰ã—ã¦ã„ã¾ã™ã€‚
+FFmpegã¯ã‚³ãƒ¼ãƒ‡ãƒƒã‚¯ã«AV1ã‚„h265ç­‰ã«å¯¾å¿œã—ã¦ã„ã¾ã™ã€‚ãã®ä»–ã®FFmpegã®è¨­å®šã¯[ã“ã¡ã‚‰](https://github.com/czbone/oneliner-env/blob/master/ffmpeg_spec.txt )ã‚’å‚ç…§ã—ã¦ãã ã•ã„ã€‚
 
-### ƒo[ƒWƒ‡ƒ“
+### ãƒãƒ¼ã‚¸ãƒ§ãƒ³
 - Nginx 1.17.4
 - PHP 7.3.10
 - MariaDB 10.4.8
@@ -51,24 +51,24 @@ FFmpeg‚ÍƒR[ƒfƒbƒN‚ÉAV1‚âh265“™‚É‘Î‰ž‚µ‚Ä‚¢‚Ü‚·B‚»‚Ì‘¼‚ÌFFmpeg‚ÌÝ’è‚Í[‚±‚¿‚ç](
 $ curl https://raw.githubusercontent.com/czbone/oneliner-env/master/script/build_lemp_ffmpeg.sh | bash
 ```
 
-# “®ìƒ`ƒFƒbƒN
+# å‹•ä½œãƒã‚§ãƒƒã‚¯
 
-ŠÂ‹«\’zŒãAWebƒuƒ‰ƒEƒU‚ÅURL‚ÉƒAƒNƒZƒX‚µAŠÈ’P‚É“®ìƒ`ƒFƒbƒN‚ðs‚¢‚Ü‚·Bulocalhostv•”•ª‚ÍŠÂ‹«‚É‡‚í‚¹‚Ä•ÏX‚µ‚Ä‚­‚¾‚³‚¢B
+ç’°å¢ƒæ§‹ç¯‰å¾Œã€Webãƒ–ãƒ©ã‚¦ã‚¶ã§URLã«ã‚¢ã‚¯ã‚»ã‚¹ã—ã€ç°¡å˜ã«å‹•ä½œãƒã‚§ãƒƒã‚¯ã‚’è¡Œã„ã¾ã™ã€‚ã€Œlocalhostã€éƒ¨åˆ†ã¯ç’°å¢ƒã«åˆã‚ã›ã¦å¤‰æ›´ã—ã¦ãã ã•ã„ã€‚
 
-phpinfo‚ª•\Ž¦‚³‚ê‚Ü‚·B
+phpinfoãŒè¡¨ç¤ºã•ã‚Œã¾ã™ã€‚
 ```
 http://localhost/index.php
 ```
 
-ƒeƒXƒg—pDB‚É“ú–{Œê•¶Žš—ñ‚ð“o˜^‚µÄ•\Ž¦‚³‚¹‚Ü‚·B•¶Žš‰»‚¯‚¹‚¸‚É“ú–{Œê‚ª•\Ž¦‚³‚ê‚Ä‚¢‚ê‚ÎOK‚Å‚·B
+ãƒ†ã‚¹ãƒˆç”¨DBã«æ—¥æœ¬èªžæ–‡å­—åˆ—ã‚’ç™»éŒ²ã—å†è¡¨ç¤ºã•ã›ã¾ã™ã€‚æ–‡å­—åŒ–ã‘ã›ãšã«æ—¥æœ¬èªžãŒè¡¨ç¤ºã•ã‚Œã¦ã„ã‚Œã°OKã§ã™ã€‚
 ```
 http://localhost/index2.php
 ```
 
-# ŒŸØŠÂ‹«
-- **Vagrant Box** CentOS7ucentos/7v, Ubuntu18uubuntu/bionic64v
-- **‚³‚­‚çVPS** uCentOS7v(•W€OS), uUbuntu18.04 amd64v(ƒJƒXƒ^ƒ€OS)
+# æ¤œè¨¼ç’°å¢ƒ
+- **Vagrant Box** CentOS7ã€Œcentos/7ã€, Ubuntu18ã€Œubuntu/bionic64ã€
+- **ã•ãã‚‰VPS** ã€ŒCentOS7ã€(æ¨™æº–OS), ã€ŒUbuntu18.04 amd64ã€(ã‚«ã‚¹ã‚¿ãƒ OS)
 
-# ŽŸŠúƒo[ƒWƒ‡ƒ“
-ŽŸŠúƒo[ƒWƒ‡ƒ“‚Í‚±‚¿‚ç‚ÅŠJ”­‚µ‚Ä‚¢‚Ü‚·B
+# æ¬¡æœŸãƒãƒ¼ã‚¸ãƒ§ãƒ³
+æ¬¡æœŸãƒãƒ¼ã‚¸ãƒ§ãƒ³ã¯ã“ã¡ã‚‰ã§é–‹ç™ºã—ã¦ã„ã¾ã™ã€‚
 https://github.com/czbone/oneliner-env-centos8

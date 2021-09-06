@@ -13,7 +13,7 @@
 
 [![MIT license](https://img.shields.io/badge/License-MIT-blue.svg)](https://lbesson.mit-license.org/)
 
-# 実行内容
+# 内容
 ローカルにAnsibleをインストールし、Ansible GalaxyのPlaybookを基本に少しカスタマイズして環境構築しています。
 次の特色があります。
 
@@ -54,3 +54,15 @@ http://localhost/index2.php
 - **Vagrant Box** CentOS8「centos/8」「centos/stream8」, CentOS7「centos/7」, Ubuntu18「ubuntu/bionic64」
 - **さくらVPS** 「CentOS7」(標準OS), 「Ubuntu18.04 amd64」(カスタムOS)
 
+# 依存関係
+
+以下のAnsibleロールが含まれています。
+
+- MariaDB role(https://github.com/czbone/ansible-role-mariadb ) 
+- geerlingguy.repo-remi
+- geerlingguy.ntp
+- geerlingguy.nginx
+- geerlingguy.php-versions
+- geerlingguy.php
+- geerlingguy.php-mysql
+- geerlingguy.firewall

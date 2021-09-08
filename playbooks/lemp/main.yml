@@ -16,7 +16,7 @@
     # sample database for Japanese testing
     mariadb_databases:
       - name: "testdb"
-        collation: utf8_general_ci
+#        collation: utf8_general_ci
     mariadb_users:
       - name: "testuser"
         password: "test"
@@ -24,10 +24,10 @@
         host: "127.0.0.1"
     
   roles:
-    - geerlingguy.ntp
-    - geerlingguy.nginx
     - role: geerlingguy.repo-remi
       when: ansible_os_family == 'RedHat'
+    - geerlingguy.ntp
+    - nginxinc.nginx
     - geerlingguy.php-versions
     - geerlingguy.php
     - geerlingguy.php-mysql
@@ -49,19 +49,28 @@
           - ibus-mozc
       when: ansible_os_family == 'Debian'
 
-    # fix mariadb config file
-    # - name: Install server config file
-    #   template:
-    #     src: etc_my.cnf.d_server.cnf.j2
-    #     dest: "{{ mariadb_config_server }}"
-    #   notify: restart mariadb
-#      when: ansible_os_family == 'RedHat'
-  
-    # fix directory ownership for Nginx
-    - file: path=/var/log/nginx owner=root group=root mode=0755
-      when: ansible_os_family == 'RedHat'
+    ##########################################################
+    # PHP configuration
+    ##########################################################
+    # fix log directory ownership
     - file: path=/var/log/php-fpm owner=root group=root mode=0700
       when: ansible_os_family == 'RedHat'
+
+    # fix PHP directory ownership
+    - file: path="/var/lib/php/opcache" owner=nginx group=nginx mode=0770
+      when: ansible_os_family == 'RedHat'
+    - file: path="/var/lib/php/session" owner=nginx group=nginx mode=0770
+      when: ansible_os_family == 'RedHat'
+    - file: path="/var/lib/php/wsdlcache" owner=nginx group=nginx mode=0770
+      when: ansible_os_family == 'RedHat'
+
+    ##########################################################
+    # nginx configuration
+    ##########################################################
+    # fix directory ownership
+    - file: path=/var/log/nginx owner=root group=root mode=0755
+      when: ansible_os_family == 'RedHat'
+
     # fix Nginx log ownership
     - template: src="logrotate_nginx.j2" dest="/etc/logrotate.d/nginx" owner=root group=root mode=0644
       when: ansible_os_family == 'RedHat'
@@ -70,29 +79,14 @@
     - file: path="/var/log/nginx/error.log" owner=nginx group=nginx mode=0640
       when: ansible_os_family == 'RedHat'
       
-    # fix PHP directory owner
-    - file: path="/var/lib/php/session" owner=nginx group=nginx mode=0770
-      when: ansible_os_family == 'RedHat'
-    - file: path="/var/lib/php/opcache" owner=nginx group=nginx mode=0770
-      when: ansible_os_family == 'RedHat'
-    - file: path="/var/lib/php/wsdlcache" owner=nginx group=nginx mode=0770
-      when: ansible_os_family == 'RedHat'
-    
     # modify nginx config file
     # fix PHP_SELF value problem
-    - template: src="fastcgi_params.j2" dest="/etc/nginx/fastcgi_params" owner=root group=root mode=0644
-    - template: src="mime.types.j2" dest="/etc/nginx/mime.types" owner=root group=root mode=0644
-    
-    # add root shell environment
-    - template: src="root_bash_profile.j2" dest="/root/.bash_profile" owner=root group=root mode=0644
-      when: ansible_os_family == 'RedHat'
-    - template: src="root_bash_profile.j2" dest="/root/.profile" owner=root group=root mode=0644
-      when: ansible_os_family == 'Debian'
+    #- template: src="fastcgi_params.j2" dest="/etc/nginx/fastcgi_params" owner=root group=root mode=0644
+    #- template: src="mime.types.j2" dest="/etc/nginx/mime.types" owner=root group=root mode=0644
       
-    # add php test scripts in default site
-    - template: src="php_index.j2" dest="/var/www/html/index.php"
-    - template: src="php_index2.j2" dest="/var/www/html/index2.php"
-
+    ##########################################################
+    # firewall configuration
+    ##########################################################
     # firewall configuration for RedHat
     - firewalld: service=http permanent=true state=enabled
       when: ansible_os_family == 'RedHat'
@@ -101,3 +95,19 @@
     - name: restart firewalld
       service: name=firewalld state=restarted enabled=yes
       when: ansible_os_family == 'RedHat'
+
+    ##########################################################
+    # root tools
+    ##########################################################
+    # add root shell environment
+    - template: src="root_bash_profile.j2" dest="/root/.bash_profile" owner=root group=root mode=0644
+      when: ansible_os_family == 'RedHat'
+    - template: src="root_bash_profile.j2" dest="/root/.profile" owner=root group=root mode=0644
+      when: ansible_os_family == 'Debian'
+
+    ##########################################################
+    # PHP sample script
+    ##########################################################
+    # add php test scripts in default site
+    - template: src="php_index.j2" dest="/var/www/html/index.php"
+    - template: src="php_index2.j2" dest="/var/www/html/index2.php"

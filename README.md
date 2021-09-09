@@ -21,7 +21,7 @@
 - 日本語最適化
 
 # 使い方
-新規にOSをインストールしたサーバに`root`でログインし、構築したい環境のスクリプトを実行します。
+新規にOSをインストールしたサーバに`root`でログインし、以下の１行のコマンドをコピーして実行します。
 完了後は一旦サーバを再起動してください。
 
 ## Webサーバ(LEMP)環境構築 (所要時間: 約10分)
@@ -32,6 +32,7 @@ Linux(L),Nginx(N),MariaDB(M),PHP(P)のLEMP環境を作成します。
 - PHP 7.4.x
 - MariaDB 10.6.x
 
+### 実行コマンド
 ```
 curl https://raw.githubusercontent.com/czbone/oneliner-env/master/script/build_lemp.sh | bash
 ```

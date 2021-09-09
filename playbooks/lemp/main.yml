@@ -79,9 +79,9 @@
       when: ansible_os_family == 'RedHat'
       
     # modify nginx config file
-    # fix PHP_SELF value problem
-    #- template: src="fastcgi_params.j2" dest="/etc/nginx/fastcgi_params" owner=root group=root mode=0644
-    #- template: src="mime.types.j2" dest="/etc/nginx/mime.types" owner=root group=root mode=0644
+    - name: backup nginx.conf
+      shell: mv /etc/nginx/nginx.conf  /etc/nginx/nginx.conf_bak
+    - copy: src="nginx.conf" dest="/etc/nginx/nginx.conf" owner=root group=root mode=0644
       
     ##########################################################
     # firewall configuration

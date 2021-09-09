@@ -16,7 +16,6 @@
     # sample database for Japanese testing
     mariadb_databases:
       - name: "testdb"
-#        collation: utf8_general_ci
     mariadb_users:
       - name: "testuser"
         password: "test"

@@ -1,15 +1,2 @@
-nginx_vhosts:
-  - listen: "80 default_server"
-    server_name: "default server"
-    root: "/var/www/html"
-    index: "index.php index.html index.htm"
-#    template: "{{ playbook_dir }}/templates/vhost.j2"
-    template: "{{ playbook_dir }}/templates/default.conf"
-
 php_fpm_pool_user: www-data
 php_fpm_pool_group: www-data
-
-#
-# MariaDB sql_mode
-#
-mariadb_sql_mode: 'ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION'

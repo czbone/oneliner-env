@@ -84,16 +84,9 @@ declare INSTALL_PACKAGE_CMD=""
 if [ $OS == 'CentOS' ]; then
     INSTALL_PACKAGE_CMD="yum -y install"
     
-    # Repository update for latest ansible
-    #yum install -y epel-release
+    # Install Python3.9 and Install latest ansible
     yum install -y python39
-    #python3.9 -m pip install --user ansible~=2.9.0
-    #pip3.9 install --upgrade pip
     pip3.9 install --user ansible
-    #python3 -m pip install --user ansible
-    #alternatives --set python /usr/bin/python3.9
-    #pip3 install --upgrade pip
-    #pip install --user ansible~=2.9.0
 elif [ $OS == 'Ubuntu' ]; then
     if ! type -P ansible >/dev/null ; then
         INSTALL_PACKAGE_CMD="apt -y install"
@@ -108,11 +101,6 @@ fi
 
 # Install ansible command if not exists
 if [ "$INSTALL_PACKAGE_CMD" != '' ]; then
-    #yum install -y python3 python3-pip
-    #pip3 install --upgrade pip
-    #alternatives --set python /usr/bin/python3
-    #pip3 install ansible --user
-    
     #$INSTALL_PACKAGE_CMD ansible
     $INSTALL_PACKAGE_CMD git
 fi

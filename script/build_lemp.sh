@@ -2,9 +2,9 @@
 # 
 # Script Name: build_lemp.sh
 #
-# Version:      2.1.0
+# Version:      4.0.0
 # Author:       Naoki Hirata
-# Date:         2019-06-03
+# Date:         2022-02-07
 # Usage:        build_lemp.sh [-test]
 # Options:      -test      test mode execution with the latest source package
 # Description:  This script builds LEMP(Linux Nginx, MariaDB, Linux) server environment with the one-liner command.
@@ -16,6 +16,7 @@
 #               2.0.0  (2019-01-06) support Ubuntu18
 #               2.1.0  (2019-06-03) fix Ubuntu18 Ansible repository problem
 #               3.1.0  (2021-09-02) add Git
+#               4.0.0  (2022-02-07) support CentOS 8 and unsupport CentOS 7
 # License:      MIT License
 
 # Define macro parameter
@@ -87,6 +88,7 @@ else
     readonly TEST_MODE="false"
 fi
 
+# Install ansible command
 declare INSTALL_PACKAGE_CMD=""
 if [ $OS == 'CentOS' ]; then
     INSTALL_PACKAGE_CMD="yum -y install"
@@ -103,12 +105,13 @@ elif [ $OS == 'Ubuntu' ]; then
         apt -y upgrade
         apt -y install software-properties-common
         apt-add-repository --yes --update ppa:ansible/ansible
+
+        $INSTALL_PACKAGE_CMD ansible
     fi
 fi
 
-# Install ansible command if not exists
+# Install git command
 if [ "$INSTALL_PACKAGE_CMD" != '' ]; then
-    #$INSTALL_PACKAGE_CMD ansible
     $INSTALL_PACKAGE_CMD git
 fi
 

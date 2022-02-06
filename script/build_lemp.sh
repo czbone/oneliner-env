@@ -54,10 +54,10 @@ elif [ "$(expr substr $(uname -s) 1 5)" == 'Linux' ]; then
         fi
     elif grep '^NAME="Rocky Linux' ${RELEASE_FILE} >/dev/null; then
         OS="CentOS"
-        #DIST_NAME="Rocky Linux"
+        DIST_NAME="Rocky Linux"
     elif grep '^NAME="AlmaLinux' ${RELEASE_FILE} >/dev/null; then
         OS="CentOS"
-        DIST_NAME="Alma Linux"
+        #DIST_NAME="Alma Linux"
     elif grep '^NAME="Amazon' ${RELEASE_FILE} >/dev/null; then
         OS="Amazon Linux"
         DIST_NAME="Amazon Linux"

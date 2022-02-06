@@ -87,7 +87,7 @@ if [ $OS == 'CentOS' ]; then
     #yum install -y epel-release
     yum install -y python39
     #python3.9 -m pip install --user ansible~=2.9.0
-    pip3 install --upgrade pip
+    pip3.9 install --upgrade pip
     pip install --user ansible
     #python3 -m pip install --user ansible
     #alternatives --set python /usr/bin/python3.9

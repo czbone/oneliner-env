@@ -47,10 +47,16 @@ elif [ "$(expr substr $(uname -s) 1 5)" == 'Linux' ]; then
         OS="CentOS"
     elif grep '^NAME="Amazon' ${RELEASE_FILE} >/dev/null; then
         OS="Amazon Linux"
+
+        echo "Your platform is not supported."
         uname -a
         exit 1
     elif grep '^NAME="Ubuntu' ${RELEASE_FILE} >/dev/null; then
         OS="Ubuntu"
+
+        echo "Your platform is not supported."
+        uname -a
+        exit 1
     else
         echo "Your platform is not supported."
         uname -a

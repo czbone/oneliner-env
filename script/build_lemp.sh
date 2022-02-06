@@ -46,6 +46,7 @@ elif [ "$(expr substr $(uname -s) 1 5)" == 'Linux' ]; then
     RELEASE_FILE=/etc/os-release
     if grep '^NAME="CentOS' ${RELEASE_FILE} >/dev/null; then
         OS="CentOS"
+        DIST_NAME="CentOS"
 
         OS_VERSION=$(. /etc/os-release; echo $VERSION_ID)
         if [ $((OS_VERSION)) -lt 8 ]; then
@@ -60,27 +61,11 @@ elif [ "$(expr substr $(uname -s) 1 5)" == 'Linux' ]; then
         #DIST_NAME="Alma Linux"
     elif grep '^NAME="Amazon' ${RELEASE_FILE} >/dev/null; then
         OS="Amazon Linux"
-        DIST_NAME="Amazon Linux"
-
-        echo "Your platform is not supported."
-        uname -a
-        exit 1
     elif grep '^NAME="Ubuntu' ${RELEASE_FILE} >/dev/null; then
         OS="Ubuntu"
-        DIST_NAME="Ubuntu"
-
-        echo "Your platform is not supported."
-        uname -a
-        exit 1
-    else
-        echo "Your platform is not supported."
-        uname -a
-        exit 1
     fi
 elif [ "$(expr substr $(uname -s) 1 6)" == 'CYGWIN' ]; then
     OS='Cygwin'
-    uname -a
-    exit 1
 fi
 
 # Exit if unsupported os

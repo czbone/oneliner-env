@@ -48,7 +48,7 @@ elif [ "$(expr substr $(uname -s) 1 5)" == 'Linux' ]; then
 
         OS_VERSION=$(. /etc/os-release; echo $VERSION_ID)
         if [ $((OS_VERSION)) -lt 8 ]; then
-            echo "Unsupported version. The minimum required version is 8."
+            echo "Unsupported os version. The minimum required version is 8."
             exit 1
         fi
     elif grep '^NAME="Amazon' ${RELEASE_FILE} >/dev/null; then

@@ -28,7 +28,7 @@ Linux(L),Nginx(N),MariaDB(M),PHP(P)のLEMP環境を作成します。
 
 ### バージョン
 - Nginx 1.21.x
-- PHP 7.4.x
+- PHP 8.1.x
 - MariaDB 10.6.x
 
 ### 実行コマンド
@@ -51,8 +51,7 @@ http://localhost/index2.php
 ```
 
 # 検証環境
-- **Vagrant Box** CentOS8「centos/8」「centos/stream8」, CentOS7「centos/7」, Ubuntu18「ubuntu/bionic64」
-- **さくらVPS** 「CentOS7」(標準OS), 「Ubuntu18.04 amd64」(カスタムOS)
+- **Vagrant Box** CentOS8「centos/8」「centos/stream8」
 
 # 依存関係
 

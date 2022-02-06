@@ -36,6 +36,7 @@ fi
 
 # Check os version
 declare OS="unsupported os"
+declare DIST_NAME="not ditected"
 
 if [ "$(uname)" == 'Darwin' ]; then
     OS='Mac'
@@ -51,14 +52,22 @@ elif [ "$(expr substr $(uname -s) 1 5)" == 'Linux' ]; then
             echo "Unsupported os version. The minimum required version is 8."
             exit 1
         fi
+    elif grep '^NAME="Rocky Linux' ${RELEASE_FILE} >/dev/null; then
+        OS="CentOS"
+        #DIST_NAME="Rocky Linux"
+    elif grep '^NAME="AlmaLinux' ${RELEASE_FILE} >/dev/null; then
+        OS="CentOS"
+        DIST_NAME="Alma Linux"
     elif grep '^NAME="Amazon' ${RELEASE_FILE} >/dev/null; then
         OS="Amazon Linux"
+        DIST_NAME="Amazon Linux"
 
         echo "Your platform is not supported."
         uname -a
         exit 1
     elif grep '^NAME="Ubuntu' ${RELEASE_FILE} >/dev/null; then
         OS="Ubuntu"
+        DIST_NAME="Ubuntu"
 
         echo "Your platform is not supported."
         uname -a
@@ -72,15 +81,17 @@ elif [ "$(expr substr $(uname -s) 1 6)" == 'CYGWIN' ]; then
     OS='Cygwin'
     uname -a
     exit 1
-else
+fi
+
+if [ ${DIST_NAME} == '' ]; then
     echo "Your platform is not supported."
     uname -a
     exit 1
 fi
 
 echo "########################################################################"
-echo "# $OS LEMP                                                             #"
-echo "# START BUILDING ENVIRONMENT                                           #"
+echo "# $DIST_NAME"
+echo "# START BUILDING ENVIRONMENT"
 echo "########################################################################"
 
 # Get test mode

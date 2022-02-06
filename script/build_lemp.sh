@@ -84,13 +84,12 @@ if [ $OS == 'CentOS' ]; then
     INSTALL_PACKAGE_CMD="yum -y install"
     
     # Repository update for latest ansible
-    yum install -y epel-release
+    #yum install -y epel-release
     yum install -y python39
-    python3 -m pip install --user ansible
-    #pip install "ansible==2.9.*"
-    #alternatives --set python /usr/bin/python3
-    #pip install --upgrade pip
-    #pip install --user ansible~=2.9.0
+    #python3 -m pip install --user ansible
+    alternatives --set python /usr/bin/python3
+    pip3 install --upgrade pip
+    pip install --user ansible~=2.9.0
 elif [ $OS == 'Ubuntu' ]; then
     if ! type -P ansible >/dev/null ; then
         INSTALL_PACKAGE_CMD="apt -y install"

@@ -23,6 +23,7 @@ readonly GITHUB_USER="czbone"
 readonly GITHUB_REPO="oneliner-env"
 readonly WORK_DIR=/root/${GITHUB_REPO}_work
 readonly PLAYBOOK="lemp"
+readonly ANSIBLE_BIN=/root/.local/bin
 
 # check root user
 readonly USERID=`id | sed 's/uid=\([0-9]*\)(.*/\1/'`
@@ -159,5 +160,5 @@ echo ${filename}" unarchived"
 
 # launch ansible
 cd ${WORK_DIR}/${GITHUB_REPO}/playbooks/${PLAYBOOK}
-ansible-galaxy install --role-file=requirements.yml --roles-path=/etc/ansible/roles --force
-ansible-playbook -i localhost, main.yml
+${ANSIBLE_BIN}/ansible-galaxy install --role-file=requirements.yml --roles-path=/etc/ansible/roles --force
+${ANSIBLE_BIN}ansible-playbook -i localhost, main.yml

@@ -40,8 +40,6 @@ declare DIST_NAME=""
 
 if [ "$(uname)" == 'Darwin' ]; then
     OS='Mac'
-    uname -a
-    exit 1
 elif [ "$(expr substr $(uname -s) 1 5)" == 'Linux' ]; then
     RELEASE_FILE=/etc/os-release
     if grep '^NAME="CentOS' ${RELEASE_FILE} >/dev/null; then

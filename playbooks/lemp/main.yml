@@ -37,7 +37,6 @@
   tasks:
     - selinux: state=disabled
       when: ansible_os_family == 'RedHat'
-      become: True
     
     # install Japanese environment in Ubuntu
     - name: Install Japanese environment

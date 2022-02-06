@@ -36,7 +36,7 @@ fi
 
 # Check os version
 declare OS="unsupported os"
-declare DIST_NAME="not ditected"
+declare DIST_NAME=""
 
 if [ "$(uname)" == 'Darwin' ]; then
     OS='Mac'
@@ -83,7 +83,8 @@ elif [ "$(expr substr $(uname -s) 1 6)" == 'CYGWIN' ]; then
     exit 1
 fi
 
-if [ ${DIST_NAME} == '' ]; then
+# Exit if unsupported os
+if [ "${DIST_NAME}" == '' ]; then
     echo "Your platform is not supported."
     uname -a
     exit 1

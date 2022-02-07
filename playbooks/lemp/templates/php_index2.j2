@@ -37,7 +37,7 @@ echo 'DB connected...<br />';
 try {
     $pdo->beginTransaction();
     
-    $pdo->exec('TRUNCATE TABLE user');
+    $pdo->exec('DELETE FROM user');
     
     $stmt = $pdo->prepare("INSERT INTO user (name) VALUES (?)");
     foreach (['太郎','花子','一郎','次郎'] as $name)

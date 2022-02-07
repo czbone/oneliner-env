@@ -54,7 +54,7 @@ try {
         echo $result['name'] . '<br>';
     }
 }catch (PDOException $e){
-    $pdo->rollback();
+    if ($pdo->inTransaction()) $pdo->rollback();
     throw new PDOException($e->getMessage(), (int)$e->getCode());
 }
 ?>

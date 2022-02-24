@@ -1,10 +1,13 @@
 ---
-- geerlingguy.ntp
-- geerlingguy.repo-remi
-- geerlingguy.php-versions
-- geerlingguy.php
-- geerlingguy.php-mysql
-- geerlingguy.firewall
-- nginxinc.nginx
-- src: https://github.com/czbone/ansible-role-mariadb
-  name: mariadb
+roles:
+  - geerlingguy.ntp
+  - geerlingguy.repo-remi
+  - geerlingguy.php-versions
+  - geerlingguy.php
+  - geerlingguy.php-mysql
+  - geerlingguy.firewall
+  - nginxinc.nginx
+  - src: https://github.com/czbone/ansible-role-mariadb
+    name: mariadb
+collections:
+  - ansible.posix

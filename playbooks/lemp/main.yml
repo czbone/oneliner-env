@@ -1,5 +1,7 @@
 - hosts: localhost
   connection: local
+  collections:
+    - ansible.posix
 
   vars_files:
     - vars/main.yml

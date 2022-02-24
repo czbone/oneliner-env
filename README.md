@@ -53,7 +53,7 @@ http://localhost/index2.php
 ```
 
 # 検証環境
-- **Vagrant Box** CentOS8「centos/8」「centos/stream8」
+- Vagrant Box: centos/stream8
 
 # 依存関係
 

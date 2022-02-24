@@ -159,5 +159,5 @@ echo ${filename}" unarchived"
 # launch ansible
 cd ${WORK_DIR}/${GITHUB_REPO}/playbooks/${PLAYBOOK}
 ${ANSIBLE_BIN}/ansible-galaxy install --role-file=requirements.yml --roles-path=/etc/ansible/roles --force
-${ANSIBLE_BIN}/ansible-galaxy collection download -r requirements.yml -p /usr/share/ansible/collections --force
+${ANSIBLE_BIN}/ansible-galaxy collection download -r requirements.yml -p /usr/share/ansible/collections
 ${ANSIBLE_BIN}/ansible-playbook -i localhost, main.yml

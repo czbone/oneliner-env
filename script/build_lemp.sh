@@ -17,7 +17,6 @@
 #               2.1.0  (2019-06-03) fix Ubuntu18 Ansible repository problem
 #               3.1.0  (2021-09-02) add Git
 #               4.0.0  (2022-02-07) support CentOS 8 and unsupport CentOS 7
-#               4.0.1  (2022-02-24) add Ansible collection configuration
 # License:      MIT License
 
 # Define macro parameter
@@ -97,7 +96,7 @@ if [ $OS == 'CentOS' ]; then
     # If Phthon3.6 is installed, install Python3.8 and install latest ansible
     yum install -y python38
     pip3.8 install --user ansible
-    pip3.8 install selinux
+    #pip3.8 install selinux
     #alternatives --set python3 /usr/bin/python3.8
 elif [ $OS == 'Ubuntu' ]; then
     if ! type -P ansible >/dev/null ; then

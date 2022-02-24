@@ -97,7 +97,6 @@ if [ $OS == 'CentOS' ]; then
     yum install -y python38
     pip3.8 install --user ansible
     alternatives --set python3 /usr/bin/python3.8
-    yum install -y python3-libselinux
 elif [ $OS == 'Ubuntu' ]; then
     if ! type -P ansible >/dev/null ; then
         INSTALL_PACKAGE_CMD="apt -y install"

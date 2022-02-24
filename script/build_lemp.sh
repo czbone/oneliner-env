@@ -97,7 +97,8 @@ if [ $OS == 'CentOS' ]; then
     # If Phthon3.6 is installed, install Python3.8 and install latest ansible
     yum install -y python38
     pip3.8 install --user ansible
-    alternatives --set python3 /usr/bin/python3.8
+    pip3.8 install selinux
+    #alternatives --set python3 /usr/bin/python3.8
 elif [ $OS == 'Ubuntu' ]; then
     if ! type -P ansible >/dev/null ; then
         INSTALL_PACKAGE_CMD="apt -y install"
@@ -159,7 +160,7 @@ mv ${destdirname} ${GITHUB_REPO}
 echo ${filename}" unarchived"
 
 # launch ansible
-export ANSIBLE_COLLECTIONS_PATHS=/usr/share/ansible/collections
+#export ANSIBLE_COLLECTIONS_PATHS=/usr/share/ansible/collections
 cd ${WORK_DIR}/${GITHUB_REPO}/playbooks/${PLAYBOOK}
 ${ANSIBLE_BIN}/ansible-galaxy install --role-file=requirements.yml --roles-path=/etc/ansible/roles --force
 ${ANSIBLE_BIN}/ansible-playbook -i localhost, main.yml

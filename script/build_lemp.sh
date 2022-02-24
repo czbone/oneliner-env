@@ -93,10 +93,10 @@ declare INSTALL_PACKAGE_CMD=""
 if [ $OS == 'CentOS' ]; then
     INSTALL_PACKAGE_CMD="yum -y install"
     
-    # Install Python3.9 and Install latest ansible
-    yum install -y python39
-    pip3.9 install --user ansible
-    alternatives --set python3  /usr/bin/python3.9
+    # Install Python3.8 and Install latest ansible
+    yum install -y python38
+    pip3.8 install --user ansible
+    alternatives --set python3 /usr/bin/python3.8
 elif [ $OS == 'Ubuntu' ]; then
     if ! type -P ansible >/dev/null ; then
         INSTALL_PACKAGE_CMD="apt -y install"
@@ -161,5 +161,4 @@ echo ${filename}" unarchived"
 export ANSIBLE_COLLECTIONS_PATHS=/usr/share/ansible/collections
 cd ${WORK_DIR}/${GITHUB_REPO}/playbooks/${PLAYBOOK}
 ${ANSIBLE_BIN}/ansible-galaxy install --role-file=requirements.yml --roles-path=/etc/ansible/roles --force
-#${ANSIBLE_BIN}/ansible-galaxy collection download -r requirements.yml -p /usr/share/ansible/collections
 ${ANSIBLE_BIN}/ansible-playbook -i localhost, main.yml

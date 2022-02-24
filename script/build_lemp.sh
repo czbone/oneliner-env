@@ -96,6 +96,7 @@ if [ $OS == 'CentOS' ]; then
     # Install Python3.9 and Install latest ansible
     yum install -y python39
     pip3.9 install --user ansible
+    alternatives --set python3  /usr/bin/python3.9
 elif [ $OS == 'Ubuntu' ]; then
     if ! type -P ansible >/dev/null ; then
         INSTALL_PACKAGE_CMD="apt -y install"

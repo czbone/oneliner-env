@@ -88,12 +88,12 @@ else
     readonly TEST_MODE="false"
 fi
 
-# Install ansible command
+# Install ansible
 declare INSTALL_PACKAGE_CMD=""
 if [ $OS == 'CentOS' ]; then
     INSTALL_PACKAGE_CMD="yum -y install"
     
-    # If Phthon3.6 is installed, install Python3.8 and install latest ansible
+    # If Phthon3.6 is installed, install Python3.8
     yum install -y python38
     pip3.8 install --user ansible
     #pip3.8 install selinux
@@ -161,6 +161,6 @@ echo ${filename}" unarchived"
 # launch ansible
 #export ANSIBLE_COLLECTIONS_PATHS=/usr/share/ansible/collections
 cd ${WORK_DIR}/${GITHUB_REPO}/playbooks/${PLAYBOOK}
-#${ANSIBLE_BIN}/ansible-galaxy install --role-file=requirements.yml --roles-path=/etc/ansible/roles --force
-${ANSIBLE_BIN}/ansible-galaxy install --role-file=requirements.yml --roles-path=~/.ansible/roles
+${ANSIBLE_BIN}/ansible-galaxy install --role-file=requirements.yml --roles-path=/etc/ansible/roles --force
+#${ANSIBLE_BIN}/ansible-galaxy install --role-file=requirements.yml --roles-path=~/.ansible/roles
 ${ANSIBLE_BIN}/ansible-playbook -i localhost, main.yml

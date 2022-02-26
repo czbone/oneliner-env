@@ -17,6 +17,7 @@
 #               2.1.0  (2019-06-03) fix Ubuntu18 Ansible repository problem
 #               3.1.0  (2021-09-02) add Git
 #               4.0.0  (2022-02-07) support CentOS 8 and unsupport CentOS 7
+#               4.0.1  (2022-02-26) fix ansible-galaxy command option
 # License:      MIT License
 
 # Define macro parameter
@@ -160,6 +161,5 @@ echo ${filename}" unarchived"
 
 # launch ansible
 cd ${WORK_DIR}/${GITHUB_REPO}/playbooks/${PLAYBOOK}
-#${ANSIBLE_BIN}/ansible-galaxy install --role-file=requirements.yml --roles-path=/etc/ansible/roles --force
 ${ANSIBLE_BIN}/ansible-galaxy install --role-file=requirements.yml
 ${ANSIBLE_BIN}/ansible-playbook -i localhost, main.yml

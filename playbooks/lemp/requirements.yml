@@ -11,3 +11,4 @@ roles:
     name: mariadb
 collections:
   - ansible.posix
+  - community.general

@@ -2,9 +2,9 @@
 # 
 # Script Name: build_lemp.sh
 #
-# Version:      4.0.0
+# Version:      5.0.0
 # Author:       Naoki Hirata
-# Date:         2022-02-07
+# Date:         2022-02-28
 # Usage:        build_lemp.sh [-test]
 # Options:      -test      test mode execution with the latest source package
 # Description:  This script builds LEMP(Linux Nginx, MariaDB, Linux) server environment with the one-liner command.
@@ -18,6 +18,7 @@
 #               3.1.0  (2021-09-02) add Git
 #               4.0.0  (2022-02-07) support CentOS 8 and unsupport CentOS 7
 #               4.0.1  (2022-02-26) fix ansible-galaxy command option
+#               5.0.0  (2022-02-28) install ansible by epel-next-release repository
 # License:      MIT License
 
 # Define macro parameter
@@ -25,7 +26,8 @@ readonly GITHUB_USER="czbone"
 readonly GITHUB_REPO="oneliner-env"
 readonly WORK_DIR=/root/${GITHUB_REPO}_work
 readonly PLAYBOOK="lemp"
-readonly ANSIBLE_BIN=/root/.local/bin
+readonly LOCAL_ANSIBLE_BIN=/root/.local/bin
+readonly INSTALL_PACKAGE_CMD="dnf -y install"
 
 # check root user
 readonly USERID=`id | sed 's/uid=\([0-9]*\)(.*/\1/'`
@@ -82,44 +84,40 @@ echo "########################################################################"
 
 # Get test mode
 if [ "$1" == '-test' ]; then
-    readonly TEST_MODE="true"
+    readonly TEST_MODE=true
     
     echo "################# START TEST MODE #################"
 else
-    readonly TEST_MODE="false"
+    readonly TEST_MODE=false
 fi
 
-# Install ansible
-declare INSTALL_PACKAGE_CMD=""
-if [ $OS == 'CentOS' ]; then
-    INSTALL_PACKAGE_CMD="yum -y install"
-    
-    # If Phthon3.6 is installed, install Python3.8
-    yum install -y python38
-    pip3.8 install --user ansible
-    #pip3.8 install selinux
-    #alternatives --set python3 /usr/bin/python3.8
-elif [ $OS == 'Ubuntu' ]; then
-    if ! type -P ansible >/dev/null ; then
-        INSTALL_PACKAGE_CMD="apt -y install"
-    
-        # Repository update for ansible
-        apt -y update
-        apt -y upgrade
-        apt -y install software-properties-common
-        apt-add-repository --yes --update ppa:ansible/ansible
-
-        $INSTALL_PACKAGE_CMD ansible
+# Install ansible command
+if ! type -P ansible >/dev/null ; then
+    if [ "${DIST_NAME}" == 'CentOS' ]; then
+        ${INSTALL_PACKAGE_CMD} epel-next-release
+        ${INSTALL_PACKAGE_CMD} ansible
+    elif [ "${DIST_NAME}" == 'Rocky Linux' ]; then
+        ${INSTALL_PACKAGE_CMD} epel-next-release
+        ${INSTALL_PACKAGE_CMD} ansible
+    # elif [ "${DIST_NAME}" == 'Alma Linux' ]; then
     fi
 fi
 
-# Install git command
-if [ "$INSTALL_PACKAGE_CMD" != '' ]; then
-    $INSTALL_PACKAGE_CMD git
+# If ansible not installed, install ansible by local mode
+if ! type -P ansible >/dev/null ; then
+    # Install ansible with Python3.8
+    ${INSTALL_PACKAGE_CMD} python38
+    pip3.8 install --user ansible
+    readonly ANSIBLE_LOCAL_MODE=true
+else
+    readonly ANSIBLE_LOCAL_MODE=false
 fi
 
+# Install git command
+${INSTALL_PACKAGE_CMD} git
+
 # Download the latest repository archive
-if [ $TEST_MODE == 'true' ]; then
+if ${TEST_MODE}; then
     url="https://github.com/${GITHUB_USER}/${GITHUB_REPO}/archive/master.tar.gz"
     version="new"
 else
@@ -161,5 +159,10 @@ echo ${filename}" unarchived"
 
 # launch ansible
 cd ${WORK_DIR}/${GITHUB_REPO}/playbooks/${PLAYBOOK}
-${ANSIBLE_BIN}/ansible-galaxy install --role-file=requirements.yml
-${ANSIBLE_BIN}/ansible-playbook -i localhost, main.yml
+if ${ANSIBLE_LOCAL_MODE}; then
+    ${LOCAL_ANSIBLE_BIN}/ansible-galaxy install --role-file=requirements.yml
+    ${LOCAL_ANSIBLE_BIN}/ansible-playbook -i localhost, main.yml
+else
+    ansible-galaxy install --role-file=requirements.yml
+    ansible-playbook -i localhost, main.yml
+fi

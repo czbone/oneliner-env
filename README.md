@@ -59,11 +59,10 @@ http://localhost/index2.php
 
 以下のAnsibleロールが含まれています。
 
+- nginxinc.nginx(公式ロール)
 - MariaDB role(https://github.com/czbone/ansible-role-mariadb ) 
 - geerlingguy.repo-remi
 - geerlingguy.ntp
-- geerlingguy.nginx
 - geerlingguy.php-versions
 - geerlingguy.php
 - geerlingguy.php-mysql
-- geerlingguy.firewall

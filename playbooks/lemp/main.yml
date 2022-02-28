@@ -79,14 +79,10 @@
     ##########################################################
     # firewall configuration
     ##########################################################
-    # firewall configuration for RedHat
     - firewalld: service=http permanent=true state=enabled
-      when: ansible_os_family == 'RedHat'
     - firewalld: service=https permanent=true state=enabled
-      when: ansible_os_family == 'RedHat'
     - name: restart firewalld
       service: name=firewalld state=restarted enabled=yes
-      when: ansible_os_family == 'RedHat'
 
     ##########################################################
     # root tools

@@ -25,33 +25,20 @@
         host: "127.0.0.1"
     
   roles:
-    - role: geerlingguy.repo-remi
-      when: ansible_os_family == 'RedHat'
+    - geerlingguy.repo-remi
     - geerlingguy.ntp
     - nginxinc.nginx
     - geerlingguy.php-versions
     - geerlingguy.php
     - geerlingguy.php-mysql
-    - role: geerlingguy.firewall
-      when: ansible_os_family == 'Debian'
     - mariadb
 
   pre_tasks:
     - selinux: state=disabled
-      when: ansible_os_family == 'RedHat'
 
   tasks:
     # - selinux: state=disabled
     #   when: ansible_os_family == 'RedHat'
-    
-    # install Japanese environment in Ubuntu
-    - name: Install Japanese environment
-      apt:
-        name:
-          - language-pack-ja-base
-          - language-pack-ja
-          - ibus-mozc
-      when: ansible_os_family == 'Debian'
 
     ##########################################################
     # PHP configuration

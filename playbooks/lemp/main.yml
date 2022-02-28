@@ -3,6 +3,7 @@
   collections:
     - ansible.posix
     - community.general
+    - community.mysql
 
   vars_files:
     - vars/main.yml

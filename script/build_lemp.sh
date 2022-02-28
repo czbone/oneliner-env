@@ -160,6 +160,7 @@ echo ${filename}" unarchived"
 # launch ansible
 cd ${WORK_DIR}/${GITHUB_REPO}/playbooks/${PLAYBOOK}
 if ${ANSIBLE_LOCAL_MODE}; then
+    echo "################# START ANSIBLE LOCAL MODE #################"
     ${LOCAL_ANSIBLE_BIN}/ansible-galaxy install --role-file=requirements.yml
     ${LOCAL_ANSIBLE_BIN}/ansible-playbook -i localhost, main.yml
 else

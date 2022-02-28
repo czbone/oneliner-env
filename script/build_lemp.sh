@@ -2,9 +2,9 @@
 # 
 # Script Name: build_lemp.sh
 #
-# Version:      5.0.0
+# Version:      5.1.0
 # Author:       Naoki Hirata
-# Date:         2022-02-28
+# Date:         2022-03-01
 # Usage:        build_lemp.sh [-test]
 # Options:      -test      test mode execution with the latest source package
 # Description:  This script builds LEMP(Linux Nginx, MariaDB, Linux) server environment with the one-liner command.
@@ -19,6 +19,7 @@
 #               4.0.0  (2022-02-07) support CentOS 8 and unsupport CentOS 7
 #               4.0.1  (2022-02-26) fix ansible-galaxy command option
 #               5.0.0  (2022-02-28) install ansible by epel-next-release repository
+#               5.1.0  (2022-03-01) support CentOS Stream 9
 # License:      MIT License
 
 # Define macro parameter
@@ -94,8 +95,9 @@ fi
 # Install ansible command
 if ! type -P ansible >/dev/null ; then
     if [ "${DIST_NAME}" == 'CentOS' ]; then
-        ${INSTALL_PACKAGE_CMD} epel-next-release
-        ${INSTALL_PACKAGE_CMD} ansible
+        #${INSTALL_PACKAGE_CMD} epel-next-release
+        #${INSTALL_PACKAGE_CMD} ansible
+        ${INSTALL_PACKAGE_CMD} ansible-core
     elif [ "${DIST_NAME}" == 'Rocky Linux' ]; then
         ${INSTALL_PACKAGE_CMD} epel-next-release
         ${INSTALL_PACKAGE_CMD} ansible

@@ -11,7 +11,7 @@
     
   vars:
     ### Repository key ###
-    remi_repo_gpg_key_url: "https://rpms.remirepo.net/RPM-GPG-KEY-remi2022"
+    #remi_repo_gpg_key_url: "https://rpms.remirepo.net/RPM-GPG-KEY-remi2022"
 
     ### PHP version ###
     php_version: '8.1'

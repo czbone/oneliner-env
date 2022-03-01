@@ -10,9 +10,6 @@
     - vars/www_{{ ansible_os_family }}.yml
     
   vars:
-    ### Repository key ###
-    #remi_repo_gpg_key_url: "https://rpms.remirepo.net/RPM-GPG-KEY-remi2022"
-
     ### PHP version ###
     php_version: '8.1'
     php_default_version_debian: "8.1"
@@ -31,7 +28,8 @@
     
   roles:
     - geerlingguy.repo-epel
-    - geerlingguy.repo-remi
+    - role: geerlingguy.repo-remi
+      when: (ansible_distribution == 'CentOS' and ansible_distribution_major_version == '8')
     - geerlingguy.ntp
     - nginxinc.nginx
     - geerlingguy.php-versions
@@ -43,8 +41,19 @@
     - selinux: state=disabled
 
   tasks:
-    # - selinux: state=disabled
-    #   when: ansible_os_family == 'RedHat'
+    ##########################################################
+    # Repository configuration
+    ##########################################################
+    - name: Install Remi repository
+      dnf:
+        name: 'https://rpms.remirepo.net/enterprise/remi-release-9.rpm'
+        state: present
+        disable_gpg_check: yes
+      when: (ansible_distribution == 'CentOS' and ansible_distribution_major_version == '9')
+    - name: Enable Remi repository
+      shell:
+        cmd: dnf config-manager --set-enabled remi
+      when: (ansible_distribution == 'CentOS' and ansible_distribution_major_version == '9')
 
     ##########################################################
     # PHP configuration

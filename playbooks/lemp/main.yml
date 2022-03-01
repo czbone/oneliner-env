@@ -31,7 +31,8 @@
     - role: geerlingguy.repo-remi
       when: (ansible_distribution == 'CentOS' and ansible_distribution_major_version == '8')
     - geerlingguy.ntp
-    - nginxinc.nginx
+    - role: nginxinc.nginx
+      when: (ansible_distribution == 'CentOS' and ansible_distribution_major_version == '8')
     - geerlingguy.php-versions
     - geerlingguy.php
     - geerlingguy.php-mysql

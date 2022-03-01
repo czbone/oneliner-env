@@ -27,6 +27,7 @@
         host: "127.0.0.1"
     
   roles:
+    - geerlingguy.repo-epel
     - geerlingguy.repo-remi
     - geerlingguy.ntp
     - nginxinc.nginx

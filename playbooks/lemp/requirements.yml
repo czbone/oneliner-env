@@ -1,6 +1,7 @@
 ---
 roles:
   - geerlingguy.ntp
+  - geerlingguy.repo-epel
   - geerlingguy.repo-remi
   - geerlingguy.php-versions
   - geerlingguy.php

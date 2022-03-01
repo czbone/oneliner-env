@@ -11,14 +11,6 @@
 
 CentOS 8の場合はStream 8へ移行してください。
 
-```
-# dnf -y install centos-release-stream
-# dnf swap centos-{linux,stream}-repos
-# dnf distro-sync
-# cat /etc/redhat-release
-CentOS Stream release 8
-```
-
 ## ライセンス
 
 [![MIT license](https://img.shields.io/badge/License-MIT-blue.svg)](https://lbesson.mit-license.org/)

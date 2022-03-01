@@ -31,7 +31,7 @@ Linux(L),Nginx(N),MariaDB(M),PHP(P)のLEMP環境を作成します。
 ### バージョン
 - Nginx 1.21.x
 - PHP 8.1.x
-- MariaDB 10.6.x
+- MariaDB 10.7.x
 
 ### 実行コマンド
 ```

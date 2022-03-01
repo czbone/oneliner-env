@@ -27,8 +27,7 @@
         host: "127.0.0.1"
     
   roles:
-    - role: geerlingguy.repo-epel
-      when: (ansible_distribution == 'CentOS' and ansible_distribution_major_version == '9')
+    - geerlingguy.repo-epel
     - role: geerlingguy.repo-remi
       when: (ansible_distribution == 'CentOS' and ansible_distribution_major_version == '8')
     - geerlingguy.ntp

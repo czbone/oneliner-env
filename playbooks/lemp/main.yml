@@ -15,7 +15,7 @@
     php_default_version_debian: "8.1"
 
     ### MariaDB version ###
-    mariadb_version: '10.6'
+    mariadb_version: '10.7'
     
     # sample database for Japanese testing
     mariadb_databases:

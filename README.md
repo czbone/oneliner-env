@@ -12,8 +12,8 @@
 CentOS 8の場合はStream 8へ移行してください。
 
 ```
-# dnf install centos-release-stream
-# dnf swap centos-linux-repos centos-stream-repos
+# dnf -y install centos-release-stream
+# dnf swap centos-{linux,stream}-repos
 # dnf distro-sync
 # cat /etc/redhat-release
 CentOS Stream release 8

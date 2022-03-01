@@ -95,12 +95,9 @@ fi
 # Install ansible command
 if ! type -P ansible >/dev/null ; then
     if [ "${DIST_NAME}" == 'CentOS' ]; then
-        #${INSTALL_PACKAGE_CMD} epel-next-release
-        #${INSTALL_PACKAGE_CMD} ansible
         ${INSTALL_PACKAGE_CMD} ansible-core
     elif [ "${DIST_NAME}" == 'Rocky Linux' ]; then
-        ${INSTALL_PACKAGE_CMD} epel-next-release
-        ${INSTALL_PACKAGE_CMD} ansible
+        ${INSTALL_PACKAGE_CMD} ansible-core
     # elif [ "${DIST_NAME}" == 'Alma Linux' ]; then
     fi
 fi

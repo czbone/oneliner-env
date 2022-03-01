@@ -10,6 +10,9 @@
     - vars/www_{{ ansible_os_family }}.yml
     
   vars:
+    ### Repository key ###
+    remi_repo_gpg_key_url: "https://rpms.remirepo.net/RPM-GPG-KEY-remi2022"
+
     ### PHP version ###
     php_version: '8.1'
     php_default_version_debian: "8.1"

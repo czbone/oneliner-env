@@ -28,9 +28,9 @@
     
   roles:
     - geerlingguy.repo-epel
-    #- geerlingguy.repo-remi
-    - role: geerlingguy.repo-remi
-      when: (ansible_distribution == 'CentOS' and ansible_distribution_major_version == '8')
+    - geerlingguy.repo-remi
+    #- role: geerlingguy.repo-remi
+    #  when: (ansible_distribution == 'CentOS' and ansible_distribution_major_version == '8')
     - geerlingguy.ntp
     - role: nginxinc.nginx
       when: (ansible_distribution == 'CentOS' and ansible_distribution_major_version == '8')
@@ -46,16 +46,16 @@
     ##########################################################
     # Repository configuration
     ##########################################################
-    - name: Install Remi repository
-      dnf:
-        name: 'https://rpms.remirepo.net/enterprise/remi-release-9.rpm'
-        state: present
-        disable_gpg_check: yes
-      when: (ansible_distribution == 'CentOS' and ansible_distribution_major_version == '9')
-    - name: Enable Remi repository
-      shell:
-        cmd: dnf config-manager --set-enabled remi
-      when: (ansible_distribution == 'CentOS' and ansible_distribution_major_version == '9')
+    # - name: Install Remi repository
+    #   dnf:
+    #     name: 'https://rpms.remirepo.net/enterprise/remi-release-9.rpm'
+    #     state: present
+    #     disable_gpg_check: yes
+    #   when: (ansible_distribution == 'CentOS' and ansible_distribution_major_version == '9')
+    # - name: Enable Remi repository
+    #   shell:
+    #     cmd: dnf config-manager --set-enabled remi
+    #   when: (ansible_distribution == 'CentOS' and ansible_distribution_major_version == '9')
 
     ##########################################################
     # Install Nginx when CentOS Stream 9

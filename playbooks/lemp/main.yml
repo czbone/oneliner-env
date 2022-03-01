@@ -41,8 +41,9 @@
 
   pre_tasks:
     - selinux: state=disabled
+
     ##########################################################
-    # Repository configuration when CentOS Stream 9
+    # Install repository when CentOS Stream 9
     ##########################################################
     - name: Install Remi repository
       dnf:

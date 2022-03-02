@@ -25,6 +25,8 @@ CentOS 8の場合はStream 8へ移行してください。
 # 使い方
 新規にOSをインストールしたサーバに`root`でログインし、以下の１行のコマンドをそのままコピーして実行します。
 
+![installdemo1](https://user-images.githubusercontent.com/4754964/156319663-67611588-b56a-4054-ad74-3956cb06207d.gif)
+
 ## Webサーバ(LEMP)環境構築 (所要時間: 約10分)
 Linux(L),Nginx(N),MariaDB(M),PHP(P)のLEMP環境を作成します。
 
@@ -37,8 +39,6 @@ Linux(L),Nginx(N),MariaDB(M),PHP(P)のLEMP環境を作成します。
 ```
 curl https://raw.githubusercontent.com/czbone/oneliner-env/master/script/build_lemp.sh | bash
 ```
-
-![installdemo1](https://user-images.githubusercontent.com/4754964/156319663-67611588-b56a-4054-ad74-3956cb06207d.gif)
 
 # 動作チェック
 

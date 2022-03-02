@@ -38,6 +38,8 @@ Linux(L),Nginx(N),MariaDB(M),PHP(P)のLEMP環境を作成します。
 curl https://raw.githubusercontent.com/czbone/oneliner-env/master/script/build_lemp.sh | bash
 ```
 
+![installdemo1](https://user-images.githubusercontent.com/4754964/156318060-2ca757e2-1fa8-4676-b497-305a57e83803.gif)
+
 # 動作チェック
 
 環境構築後、WebブラウザでURLにアクセスし、簡単に動作チェックを行います。「localhost」部分は環境に合わせて変更してください。
